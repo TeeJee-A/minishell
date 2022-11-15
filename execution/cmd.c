@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 06:01:07 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/14 16:12:06 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/15 12:56:53 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,7 @@ char	*add_path(t_execlst *el)
 void	execute_command(char *path, t_execlst *el)
 {
 	if (execve(path, el->cmd, g_data.g_env) == -1)
-	{
-		printf("command not found\n");
-		exit(1);
-	}
+		print_error(el->cmd[0], "---> Command not found", 127);
 }
 
 void	cmd(t_execlst *el, int __pipe[2])
@@ -49,7 +46,10 @@ void	cmd(t_execlst *el, int __pipe[2])
 		exit(1);
 	path = add_path(el);
 	if (!check_if_builtin(el))
+	{
 		builtin_commands(el);
+		exit(0);
+	}
 	else
 	{
 		if (el->red && el->red->fd)

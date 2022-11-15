@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 19:17:59 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/14 12:37:25 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/15 13:43:36 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	mini_unset_exp(t_env *tmp, t_env *tmp2);
 /*********************************************************/
 
 /********************** exp_empty ************************/
-void    get_exp_empty(t_env *dt);
+void	get_exp_empty(t_env *dt);
 
 size_t	ft_strlen_exp(const char *str);
 char	*ft_substr_exp(char const *s, unsigned int start, size_t len);
@@ -101,13 +101,16 @@ char	*get_var_value_exp_first(const char *s, int index);
 char	**set_words_exp_first(char const *s, char c);
 char	**ft_split_exp_first(char const *s, char c);
 
+int		check_redir(t_execlst *el);
+void	mini_token_and_exec(t_execlst *el);
+
 /*********************************************************/
 /************************ get_env ************************/
 /*********************************************************/
 
 /********************** exp_empty ************************/
 
-void    get_env_empty(t_env *dt);
+void	get_env_empty(t_env *dt);
 
 int		ft_check_plus_env(char *line);
 int		find_equal_env(char **line);
@@ -164,18 +167,21 @@ char	*add_path(t_execlst *el);
 // int    add_befor(char *line);
 // t_env *init_envlst(void);
 // void	ft_swap(char **s1, char **s2);
-int	check_path(char *var, char *p);
+int		check_path(char *var, char *p);
 char	*join_path(t_execlst *el);
 void	preexec(t_execlst *el, int pipe[2]);
 void	postexec(t_execlst *el, int pipe[2]);
-int     check_if_builtin(t_execlst *el);
+int		check_if_builtin(t_execlst *el);
 void	sort_env(t_env *dt);
-void	print_error(char *s1, char *s2, int error);
 // void	sort_env(char **line);
 // int     check_export(char *line);
 t_env	*init_envlst(void);
 int		ft_check_plus(char *line);
 void	ft_concat_plus(t_env *dt, char *line);
+
+void	print_error_builtin(char *s1, char *s2, int error);
+void	print_error(char *s1, char *s2, int error);
+int		check_access_file(t_execlst *el, int check_next);
 // int	find_equal(char **line);
 // int	deja_vu(char *str);
 

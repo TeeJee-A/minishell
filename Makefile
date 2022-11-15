@@ -29,7 +29,10 @@ SRC_MINI = execution/main.c\
 	execution/export/get_exp_utils2.c\
 	execution/unset_cmd.c\
 	execution/export/ft_split_exp_first.c\
-	execution/path_exec.c
+	execution/path_exec.c\
+	execution/builtin_commands.c\
+	execution/print_error.c\
+	execution/execution.c
 
 SRC_EXEC = src/execution/exec_redirections1.c 
 
@@ -52,7 +55,7 @@ $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(LIBFT) -lreadline -L/goinfre/ataji/.brew/opt/readline/lib -o $(NAME) $^
 
 %.o: %.c $(INC)
-	$(CC) -g -fsanitize=address $(CFLAGS) -c $< -o $@ 
+	$(CC) $(CFLAGS) -c $< -o $@ 
 
 clean:
 	@$(RM) $(OBJS)

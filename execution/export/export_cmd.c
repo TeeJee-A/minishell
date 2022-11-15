@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 01:12:48 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/10 18:28:52 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/15 12:53:43 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,6 +175,7 @@ int	handle_special_char_exp(char **line)
 	while (i < count)
 	{
 		printf("Minishell: `%s': Not a valid identifier\n", line[j]);
+		g_data.exit_status = 1;
 		i++;
 		j++;
 		check = 1;
@@ -250,6 +251,7 @@ void	add_variable_exp(char **line, t_env *dt)
 			if (ft_check_plus_exp(line[i]) == 2)
 			{
 				printf("Minishell: `%s': Not a valid identifier\n", line[i]);
+				g_data.exit_status = 1;
 				return ;
 			}
 			if (ft_check_plus_exp(line[i]) == 1)

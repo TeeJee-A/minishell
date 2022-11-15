@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 10:54:02 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/14 16:12:15 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/15 12:49:13 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,66 +30,24 @@ int	check_if_builtin(t_execlst *el)
 	return (1);
 }
 
-int	check_access_file(t_execlst *el)
+int	check_access_file(t_execlst *el, int check_next)
 {
 	while (el)
 	{
 		if (el->red && el->red->file)
-		{
 			if (access(el->red->file, F_OK) == -1)
 			{
-				printf("Minishell: %s: No such file or directory\n", el->red->file);
-				g_data.exit_status = 1;
-				return (0);
+				if (check_next == 1)
+				{
+					print_error_builtin(el->red->file, "No such file or directory", 1);
+					return (0);
+				}
+				else
+					print_error(el->red->file, "No such file or directory", 1);
 			}
-		}
 		el = el->next;
 	}
 	return (1);
-}
-
-int    builtin_commands(t_execlst *el)
-{
-	int		ck;
-
-	ck = 0;
-	if (check_access_file(el) == 0)
-		return (2);
-	if (el && el->cmd && el->cmd[0])
-	{
-		if (!(ft_strcmp(el->cmd[0], "echo")))
-		{
-			if (el->cmd[1] == NULL && !el->red)
-			{
-				write (1, "\n", 1);
-				ck = 1;
-			}
-			else
-				ck = echo_cmd(el);
-		}
-		else if (!(ft_strcmp(el->cmd[0], "exit")))
-			exit_cmd();
-		else if (!(ft_strcmp(el->cmd[0], "pwd")))
-			ck = pwd_cmd(el);
-		else if (!(ft_strcmp(el->cmd[0], "cd")))
-			ck = cd_cmd(el->cmd);
-		else if (!(ft_strcmp(el->cmd[0], "env")))
-			ck = env_cmd(el);
-		else if (!(ft_strcmp(el->cmd[0], "export")))
-			ck = export_cmd(el->cmd, el);
-		else if (!(ft_strcmp(el->cmd[0], "unset")))
-		{
-			ck = unset_env(el->cmd);
-			ck = unset_exp(el->cmd);
-		}
-	}
-	return (ck);
-}
-
-void	print_error(char *s1, char *s2, int error)
-{
-	printf("Minishell: %s: %s\n", s1, s2);
-	exit(error);
 }
 
 int	ft_red(t_execlst *el)
@@ -98,6 +56,7 @@ int	ft_red(t_execlst *el)
 		return (-1);
 	if (el && el->red && (el->red->type == REDOUT || el->red->type == APPND))
 	{
+		
 		dup2(el->red->fd, 1);
 		close(el->red->fd);
 		return (1);

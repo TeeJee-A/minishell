@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 06:02:36 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/12 09:49:52 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/15 09:35:12 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_env	*init_envlst(void)
 
 void    get_env_empty(t_env *dt)
 {
-    char    pwd[256];
+    char    pwd[1024];
 
     getcwd(pwd, sizeof(pwd));
     dt->var = ft_strdup_env("PWD");

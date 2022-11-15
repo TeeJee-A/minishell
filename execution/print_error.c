@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_env.c                                          :+:      :+:    :+:   */
+/*   print_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/29 19:45:32 by ibenmain          #+#    #+#             */
-/*   Updated: 2022/11/10 19:02:33 by ataji            ###   ########.fr       */
+/*   Created: 2022/11/15 11:56:09 by ataji             #+#    #+#             */
+/*   Updated: 2022/11/15 12:40:40 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/utils_char_str.h"
+#include "../includes/minishell.h"
 
-char	*find_env(char *path)
+void	print_error_builtin(char *s1, char *s2, int error)
 {
-	t_env	*env;
+	printf("Minishell: %s: %s\n", s1, s2);
+	g_data.exit_status = error;
+}
 
-	env = g_data.g_envlst;
-	if (!env)
-		return (NULL);
-	if (path)
-	{
-		while (env)
-		{
-			if (!ft_strcmp(path, env->var))
-				return (env->val);
-			env = env->next;
-		}
-	}
-	return (NULL);
+void	print_error(char *s1, char *s2, int error)
+{
+	printf("Minishell: %s: %s\n", s1, s2);
+	g_data.exit_status = error;
+	exit(error);
 }
