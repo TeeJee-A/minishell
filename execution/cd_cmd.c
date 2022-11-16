@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 11:29:20 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/16 09:27:43 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/16 19:37:43 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,13 +80,15 @@ int	cd_cmd(char **line)
 		mini_cd_cmd();
 		return (1);
 	}
-	else if (access(line[1], F_OK) == -1)
-		printf("Minishell: cd: %s: No such file or directory\n", line[1]);
-	else if (access(line[1], X_OK) == -1)
-		printf("Minishell: cd: %s: Permission denied\n", line[1]);
 	else
+	{
 		if (chdir(line[1]) == -1)
+		{
+			perror("Minishell: cd");
+			g_data.exit_status = 1;
 			return (1);
+		}
+	}
 	change_pwd(g_data.g_envlst);
 	change_pwd(g_data.g_explst);
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 19:17:59 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/16 16:00:21 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/16 19:37:59 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # include<stdbool.h>
 # include<signal.h>
 # include<paths.h>
+# include<dirent.h>
 
 # define W 1
 # define R 0
@@ -47,6 +48,8 @@ void	add_variable(char **line, t_env *dt);
 void	exit_cmd(void);
 void	mini_unset_env(t_env *tmp, t_env *tmp2);
 void	mini_unset_exp(t_env *tmp, t_env *tmp2);
+int     mini_echo(t_execlst *el);
+int     check_directory(char **line);
 
 /*********************************************************/
 /********************** get_export ***********************/
@@ -178,13 +181,15 @@ void	sort_env(t_env *dt);
 t_env	*init_envlst(void);
 int		ft_check_plus(char *line);
 void	ft_concat_plus(t_env *dt, char *line);
+int     ft_red(t_execlst *el, int *dup1, int *dup0);
+
+/*********************************************************/
+/************************ errors *************************/
+/*********************************************************/
 
 void	print_error_builtin(char *s1, char *s2, int error);
 void	print_error(char *s1, char *s2, int error);
 int		check_access_file(t_execlst *el, int check_next);
-int     ft_red(t_execlst *el, int *dup1, int *dup0);
-// int	find_equal(char **line);
-// int	deja_vu(char *str);
 
 /*********************************************************/
 /*********************************************************/

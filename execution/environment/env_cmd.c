@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 21:20:45 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/16 10:12:20 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/16 16:29:10 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -295,11 +295,8 @@ void	add_variable_env(char **line, t_env *dt)
 	while (line[++i])
 	{
 		k = 0;
-		puts("1");
 		tab = add_variable_env_one(line, tmp, tab, i);
-		puts("2");
 		k = exist_or_not_env(tab, line);
-		puts("3");
 		if (line)
 		{
 			if (ft_check_plus_env(line[i]) == 2)
@@ -313,22 +310,17 @@ void	add_variable_env(char **line, t_env *dt)
 				condition = 1;
 			}
 		}
-		puts("4");
 		while (condition == 0 && k == 0 && tmp && tmp->next)
         	tmp = tmp->next;
-		puts("5");
 		if(condition == 0 && k == 0)
 		{
 			tmp->next = init_envlst();
     		tmp = tmp->next;
 		}
-		puts("6");
 		if (condition == 0 && k == 0 && tab[1])
 			add_variable_env_three(tmp, tab);
-		puts("7");
 		if (condition == 0 && k == 0 && !tab[1])
 			add_variable_env_two(tmp, tab, line);
-		puts("8");
 	}
 }
 
