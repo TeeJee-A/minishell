@@ -6,12 +6,26 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 10:54:02 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/16 08:35:24 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/16 16:02:44 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 #include "../includes/parsing.h"
+
+char	*change_app_to_low(char *cmd)
+{
+	int	i;
+
+	i = 0;
+	while (cmd[i])
+	{
+		if (cmd[i] >= 65 && cmd[i] <= 90)
+			cmd[i] += 32;
+		i++;
+	}
+	return (cmd);
+}
 
 int	check_if_builtin(t_execlst *el)
 {
@@ -24,6 +38,7 @@ int	check_if_builtin(t_execlst *el)
 		return (0);
 	if (!el)
 		return (0);
+	el->cmd[0] = change_app_to_low(*el->cmd);
 	cmd = "echo exit pwd cd env export unset";
 	tab = my_split(cmd, ' ');
 	while (tab[i])
@@ -57,21 +72,34 @@ int	check_access_file(t_execlst *el, int check_next)
 	return (1);
 }
 
-int	ft_red(t_execlst *el)
+int	ft_red(t_execlst *el, int *dup1, int *dup0)
 {
-	if (el && el->red && el->red->fd < 0)
-		return (-1);
-	if (el && el->red && (el->red->type == REDOUT || el->red->type == APPND))
+	int fd_out;
+	int fd_in;
+
+	*dup1 = dup(1);
+	*dup0 = dup(0);
+	fd_out = -1;
+	fd_in = -1;
+	while(el->red)
 	{
-		dup2(el->red->fd, 1);
-		close(el->red->fd);
-		return (1);
+		if (el->red->fd < 0)
+			return (-1);
+		if (el->red->type == 6 || el->red->type == 8)
+			fd_out = el->red->fd;
+		if (el->red->type == 5 || el->red->type == 7)
+			fd_in = el->red->fd;
+		el->red = el->red->next;
 	}
-	if (el && el->red && (el->red->type == REDIN || el->red->type == HEREDC))
+	if (fd_out != -1)
 	{
-		dup2(el->red->fd, 0);
-		close(el->red->fd);
-		return (1);
+		dup2(fd_out, 1);
+		close(fd_out);
+	}
+	if (fd_in != -1)
+	{
+		dup2(fd_in, 0);
+		close(fd_in);
 	}
 	return (0);
 }

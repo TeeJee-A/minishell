@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 21:20:45 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/16 09:49:25 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/16 10:12:20 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -229,27 +229,55 @@ void	ft_concat_plus_env(t_env *dt, char *line)
 	ft_replace_value_variable_env(tmp, var, val);
 }
 
-// void	add_variable_env_one(char **line, t_env *dt, char **tab, int i)
-// {
-// 	t_env	*tmp;
+char	**add_variable_env_one(char **line, t_env *dt, char **tab, int i)
+{
+	t_env	*tmp;
 
-// 	tmp = dt;
-// 	if(find_equal_environment(line[i]))
-// 	{
-// 		tab = ft_split_env(line[i], '=');
-// 		if (!tab[1] && !check_plus_exist_env(tmp, tab[0]))
-// 		{
-// 			tmp->val = ft_strdup_env("");
-// 			tmp->sz_val = 1;
-// 		}
-// 	}
-// 	else
-// 	{
-// 		tab = (char **)malloc(2 * sizeof(char *));
-// 		tab[0] = line[i];
-// 		tab[1] = NULL;
-// 	}
-// }
+	tmp = dt;
+	if(find_equal_environment(line[i]))
+	{
+		tab = ft_split_env(line[i], '=');
+		if (!tab[1] && !check_plus_exist_env(tmp, tab[0]))
+		{
+			tmp->val = ft_strdup_env("");
+			tmp->sz_val = 1;
+		}
+	}
+	else
+	{
+		tab = (char **)malloc(2 * sizeof(char *));
+		tab[0] = line[i];
+		tab[1] = NULL;
+	}
+	return (tab);
+}
+
+void	add_variable_env_two(t_env *dt, char **tab, char **line)
+{
+	t_env	*tmp;
+
+	tmp = dt;
+	tmp->var = ft_strdup_env(tab[0]);
+	if (find_equal_env(line))
+	{
+		tmp->val = ft_strdup_env("");
+		tmp->sz_val = 1;
+	}
+    tmp->sz_var = ft_strlen_env(tab[0]);
+    tmp->next = NULL;
+}
+
+void	add_variable_env_three(t_env *dt, char **tab)
+{
+	t_env	*tmp;
+
+	tmp = dt;
+	tmp->var = ft_strdup_env(tab[0]);
+    tmp->val = ft_strdup_env(tab[1]);
+    tmp->sz_var = ft_strlen_env(tab[0]);
+    tmp->sz_val = ft_strlen_env(tab[1]);
+    tmp->next = NULL;
+}
 
 void	add_variable_env(char **line, t_env *dt)
 {
@@ -263,27 +291,15 @@ void	add_variable_env(char **line, t_env *dt)
 	k = 0;
 	condition = 0;
 	tmp = dt;
+	// tab = NULL;
 	while (line[++i])
 	{
 		k = 0;
-		// if (handle_special_char_env(line) == 1)
-		// 	return ;
-		if(find_equal_environment(line[i]))
-		{
-			tab = ft_split_env(line[i], '=');
-			if (!tab[1] && !check_plus_exist_env(tmp, tab[0]))
-			{
-				tmp->val = ft_strdup_env("");
-				tmp->sz_val = 1;
-			}
-		}
-		else
-		{
-			tab = (char **)malloc(2 * sizeof(char *));
-			tab[0] = line[i];
-			tab[1] = NULL;
-		}
+		puts("1");
+		tab = add_variable_env_one(line, tmp, tab, i);
+		puts("2");
 		k = exist_or_not_env(tab, line);
+		puts("3");
 		if (line)
 		{
 			if (ft_check_plus_env(line[i]) == 2)
@@ -297,32 +313,22 @@ void	add_variable_env(char **line, t_env *dt)
 				condition = 1;
 			}
 		}
+		puts("4");
 		while (condition == 0 && k == 0 && tmp && tmp->next)
         	tmp = tmp->next;
+		puts("5");
 		if(condition == 0 && k == 0)
 		{
 			tmp->next = init_envlst();
     		tmp = tmp->next;
 		}
+		puts("6");
 		if (condition == 0 && k == 0 && tab[1])
-		{
-			tmp->var = ft_strdup_env(tab[0]);
-            tmp->val = ft_strdup_env(tab[1]);
-            tmp->sz_var = ft_strlen_env(tab[0]);
-            tmp->sz_val = ft_strlen_env(tab[1]);
-            tmp->next = NULL;
-		}
+			add_variable_env_three(tmp, tab);
+		puts("7");
 		if (condition == 0 && k == 0 && !tab[1])
-		{
-			tmp->var = ft_strdup_env(tab[0]);
-			if (find_equal_env(line))
-			{
-				tmp->val = ft_strdup_env("");
-				tmp->sz_val = 1;
-			}
-            tmp->sz_var = ft_strlen_env(tab[0]);
-            tmp->next = NULL;
-		}
+			add_variable_env_two(tmp, tab, line);
+		puts("8");
 	}
 }
 

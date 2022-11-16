@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 07:38:32 by kfaouzi           #+#    #+#             */
-/*   Updated: 2022/11/10 19:19:47 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/16 16:00:42 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ typedef enum s_enum
 	RED,
 	D_QTE,
 	S_QTE,
-	HEREDC,
-	REDOUT,
-	REDIN,
-	APPND,
+	HEREDC, //5
+	REDOUT, //6
+	REDIN, // 7
+	APPND, // 8
 	NON,
 }t_enum;
 
@@ -122,5 +122,5 @@ void		put_in_fd(char *del, int fd, int nbdel);
 void		add_garbage_in(void *data);
 void		stay_in_shell(int _signal);
 void		signals(void);
-int			ft_red(t_execlst *el);
+// int			ft_red(t_execlst *el);
 #endif

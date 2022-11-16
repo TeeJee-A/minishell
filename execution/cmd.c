@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 06:01:07 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/15 12:56:53 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/16 16:01:38 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,21 @@ char	*add_path(t_execlst *el)
 	return (path);
 }
 
-void	execute_command(char *path, t_execlst *el)
+void	execute_command(char *path, t_execlst *el, int *fd_out, int *fd_in)
 {
 	if (execve(path, el->cmd, g_data.g_env) == -1)
-		print_error(el->cmd[0], "---> Command not found", 127);
+	{
+		dup2(*fd_out, 1);
+		dup2(*fd_in, 0);
+		print_error(el->cmd[0], "Command not found", 127);
+	}
 }
 
 void	cmd(t_execlst *el, int __pipe[2])
 {
 	char	*path;
+	int		fd_out;
+	int		fd_in;
 
 	preexec(el, __pipe);
 	if (!el->cmd || !el->cmd[0])
@@ -53,8 +59,8 @@ void	cmd(t_execlst *el, int __pipe[2])
 	else
 	{
 		if (el->red && el->red->fd)
-			if (ft_red(el) == -1)
+			if (ft_red(el, &fd_out, &fd_in) == -1)
 				print_error(el->red->file, "No such file or directory", 1);
-		execute_command(path, el);
+		execute_command(path, el, &fd_out, &fd_in);
 	}
 }

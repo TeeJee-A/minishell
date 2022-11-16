@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 14:16:38 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/15 20:01:01 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/16 15:03:43 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,22 @@ void	mini_token_and_exec(t_execlst *el)
 {
 	int	fd;
 	int	status;
+	int	cmd;
 
 	fd = dup(STDIN_FILENO);
+	cmd = 0;
+	
 	if (!el->next)
 	{
-		// if (!check_if_builtin(el))
-		if (!builtin_commands(el))
-			execve_function(el);
+		if (!check_if_builtin(el))
+		{
+			builtin_commands(el);
+			cmd = 1;
+		}
 	}
-	else
+	if (!el->next && cmd == 0)
+		execve_function(el);
+	else if (el->next)
 		execve_function(el);
 	while (1)
 		if (wait(&status) == -1)

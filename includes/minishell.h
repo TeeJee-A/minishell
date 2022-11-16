@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 19:17:59 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/15 13:43:36 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/16 16:00:21 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,6 +182,7 @@ void	ft_concat_plus(t_env *dt, char *line);
 void	print_error_builtin(char *s1, char *s2, int error);
 void	print_error(char *s1, char *s2, int error);
 int		check_access_file(t_execlst *el, int check_next);
+int     ft_red(t_execlst *el, int *dup1, int *dup0);
 // int	find_equal(char **line);
 // int	deja_vu(char *str);
 
