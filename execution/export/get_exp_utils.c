@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 21:05:25 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/10 18:43:21 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/16 08:32:39 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,7 @@ char	*ft_strdup_exp(const char *s1)
 	int		i;
 
 	i = 0;
-	str = (char *)malloc(ft_strlen(s1) + 1 * sizeof(char));
+	str = (char *)malloc(ft_strlen_exp(s1) + 1 * sizeof(char));
 	if (!str)
 		return (NULL);
 	while (s1[i] != '\0')
@@ -171,8 +171,8 @@ char	*ft_strjoin_exp(char const *s1, char const *s2)
 	j = 0;
 	if (!s1 || !s2)
 		return (NULL);
-	sl1 = ft_strlen (s1);
-	sl2 = ft_strlen (s2);
+	sl1 = ft_strlen_exp (s1);
+	sl2 = ft_strlen_exp (s2);
 	str = (char *)malloc((sl1 + sl2 + 1) * sizeof(char));
 	if (!str)
 		return (NULL);

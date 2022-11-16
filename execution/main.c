@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 10:54:02 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/15 12:49:13 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/16 08:35:24 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,15 @@ int	check_if_builtin(t_execlst *el)
 	int		i;
 
 	i = 0;
+	if (!el->cmd || !*el->cmd)
+		return (0);
+	if (!el)
+		return (0);
 	cmd = "echo exit pwd cd env export unset";
-	tab = ft_split(cmd, ' ');
+	tab = my_split(cmd, ' ');
 	while (tab[i])
 	{
-		if (ft_strcmp(tab[i++], el->cmd[0]) == 0)
+		if (my_strcmp(tab[i++], el->cmd[0]) == 0)
 			return (0);
 	}
 	return (1);
@@ -35,16 +39,19 @@ int	check_access_file(t_execlst *el, int check_next)
 	while (el)
 	{
 		if (el->red && el->red->file)
+		{
 			if (access(el->red->file, F_OK) == -1)
 			{
 				if (check_next == 1)
 				{
-					print_error_builtin(el->red->file, "No such file or directory", 1);
+					print_error_builtin(el->red->file, \
+						"No such file or directory", 1);
 					return (0);
 				}
 				else
 					print_error(el->red->file, "No such file or directory", 1);
 			}
+		}
 		el = el->next;
 	}
 	return (1);
@@ -56,7 +63,6 @@ int	ft_red(t_execlst *el)
 		return (-1);
 	if (el && el->red && (el->red->type == REDOUT || el->red->type == APPND))
 	{
-		
 		dup2(el->red->fd, 1);
 		close(el->red->fd);
 		return (1);
@@ -72,7 +78,7 @@ int	ft_red(t_execlst *el)
 
 int	check_path(char *var, char *p)
 {
-	if (ft_strcmp(var, p) != 0)
+	if (my_strcmp(var, p) != 0)
 		return (0);
 	return (1);
 }
@@ -95,15 +101,15 @@ char	*creat_path(char **line, char *path)
 	int		j;
 
 	old_path = getenv("PATH");
-	tab = ft_split(old_path, ':');
+	tab = my_split(old_path, ':');
 	i = 0;
 	while (line[i])
 	{
 		j = 0;
 		while (tab[j])
 		{
-			command = ft_strjoin("/", line[i]);
-			path = ft_strjoin(tab[j], command);
+			command = my_strjoin("/", line[i]);
+			path = my_strjoin(tab[j], command);
 			if (access(path, X_OK) == 0)
 				return (path);
 			j++;

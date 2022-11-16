@@ -10,7 +10,7 @@ int    echo_heredc(t_execlst *el)
 
     red = el->red;
     n = 1;
-    while (el->cmd[n] && !ft_strcmp(el->cmd[n], "-n"))
+    while (el->cmd[n] && !my_strcmp(el->cmd[n], "-n"))
         n++;
     i = n;
     while (el->cmd[i])
@@ -44,7 +44,7 @@ int    echo_cmd(t_execlst *el)
     m = 0;
     if (red && red->fd)
     {
-        while (el->cmd[n] && !ft_strcmp(el->cmd[n], "-n"))
+        while (el->cmd[n] && !my_strcmp(el->cmd[n], "-n"))
             n++;
         i = n;
         if (red->type == HEREDC || red->type == REDIN)
@@ -66,9 +66,9 @@ int    echo_cmd(t_execlst *el)
         return (1);
     }
     k = 1;
-    if (!(ft_strcmp(el->cmd[k], "-n")))
+    if (!(my_strcmp(el->cmd[k], "-n")))
     {
-        while (el->cmd[k] && !ft_strcmp(el->cmd[k], "-n"))
+        while (el->cmd[k] && !my_strcmp(el->cmd[k], "-n"))
             k++;
         if (el->cmd && el->cmd[2] == NULL)
             return (1);

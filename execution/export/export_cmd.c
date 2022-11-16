@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 01:12:48 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/15 12:53:43 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/16 08:36:22 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	check_if_in_export(char *variable)
 	dt = g_data.g_explst;
 	while (dt)
 	{
-		if (!ft_strcmp(variable, dt->var))
+		if (!my_strcmp(variable, dt->var))
 			return (0);
 		dt = dt->next;
 	}
@@ -299,7 +299,7 @@ int export_cmd(char **line, t_execlst *el)
 	t = 0;
 	dt_exp = g_data.g_explst;
 	dt_env = g_data.g_envlst;
-	if (ft_strlendm(line) > 1)
+	if (my_strlendm(line) > 1)
 	{
 		t = 1;
 		add_variable_exp(line, dt_exp);
@@ -307,7 +307,7 @@ int export_cmd(char **line, t_execlst *el)
 	}
 	sort_exp(dt_exp);
 	tmp = g_data.g_explst;
-	if (el->red && el->red->fd && ft_strlendm(line) == 1)
+	if (el->red && el->red->fd && my_strlendm(line) == 1)
 	{
 		while (tmp)
 		{

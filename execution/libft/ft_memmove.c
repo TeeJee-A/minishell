@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataji <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 17:08:49 by ataji             #+#    #+#             */
-/*   Updated: 2021/12/01 21:01:11 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/15 22:46:31 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	ft_putchar(unsigned char *s, unsigned char *d, size_t n)
+static void	my_putchar(unsigned char *s, unsigned char *d, size_t n)
 {
 	size_t	i;
 
@@ -24,7 +24,7 @@ static void	ft_putchar(unsigned char *s, unsigned char *d, size_t n)
 	}
 }
 
-static void	ft_putstr(unsigned char *s, unsigned char *d, size_t n)
+static void	my_putstr(unsigned char *s, unsigned char *d, size_t n)
 {
 	while (n > 0)
 	{
@@ -33,7 +33,7 @@ static void	ft_putstr(unsigned char *s, unsigned char *d, size_t n)
 	}
 }
 
-void	*ft_memmove(void *dst, const void *src, size_t n)
+void	*my_memmove(void *dst, const void *src, size_t n)
 {
 	unsigned char	*s;
 	unsigned char	*d;
@@ -45,8 +45,8 @@ void	*ft_memmove(void *dst, const void *src, size_t n)
 	if (!dst && !src)
 		return (NULL);
 	if (s > d)
-		ft_putchar(s, d, n);
+		my_putchar(s, d, n);
 	else if (d > s)
-		ft_putstr(s, d, n);
+		my_putstr(s, d, n);
 	return (d);
 }

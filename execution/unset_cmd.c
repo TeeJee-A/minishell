@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 00:26:25 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/11 21:23:44 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/16 08:36:47 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	unset_env(char **line)
 		tmp2 = g_data.g_envlst;
 		while (tmp)
 		{
-			if (!(ft_strcmp(tmp->var, line[i])))
+			if (!(my_strcmp(tmp->var, line[i])))
 			{
 				mini_unset_env(tmp, tmp2);
 				break ;
@@ -87,7 +87,7 @@ int	unset_exp(char **line)
 		tmp2 = g_data.g_explst;
 		while (tmp)
 		{
-			if (!(ft_strcmp(tmp->var, line[i])))
+			if (!(my_strcmp(tmp->var, line[i])))
 			{
 				mini_unset_exp(tmp, tmp2);
 				break ;

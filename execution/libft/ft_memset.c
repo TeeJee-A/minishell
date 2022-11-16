@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataji <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 17:05:49 by ataji             #+#    #+#             */
-/*   Updated: 2021/12/04 16:01:43 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/15 22:46:36 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memset(void *b, int c, size_t len)
+void	*my_memset(void *b, int c, size_t len)
 {
 	unsigned char	*str;
 

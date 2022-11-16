@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 14:16:38 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/15 14:26:02 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/15 20:01:01 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	check_redir(t_execlst *el)
 {
 	int	i;
-	
+
 	i = 0;
 	while (el->cmd[i])
 	{
@@ -34,9 +34,8 @@ void	mini_token_and_exec(t_execlst *el)
 	fd = dup(STDIN_FILENO);
 	if (!el->next)
 	{
-		if (!check_if_builtin(el))
-			builtin_commands(el);
-		else
+		// if (!check_if_builtin(el))
+		if (!builtin_commands(el))
 			execve_function(el);
 	}
 	else

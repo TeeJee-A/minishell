@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yataji <yataji@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 20:29:12 by ataji             #+#    #+#             */
-/*   Updated: 2022/10/04 14:48:11 by yataji           ###   ########.fr       */
+/*   Updated: 2022/11/15 22:47:22 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	count_words(const char *str, char c)
 	return (i);
 }
 
-static char	**ft_freeing(char **tab)
+static char	**my_freeing(char **tab)
 {
 	int	i;
 
@@ -64,16 +64,16 @@ static char	**set_words(char const *s, char c)
 		while (s[i + j] != c && s[i + j])
 			j++;
 		if (j != 0)
-			tab[k++] = ft_substr(s, i, j);
+			tab[k++] = my_substr(s, i, j);
 		if (j != 0 && !tab[k - 1])
-			return (ft_freeing(tab));
+			return (my_freeing(tab));
 		i = i + j;
 	}
 	tab[k] = NULL;
 	return (tab);
 }
 
-char	**ft_split(char const *s, char c)
+char	**my_split(char const *s, char c)
 {
 	char	**tab;
 

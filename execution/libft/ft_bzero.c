@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataji <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 15:35:24 by ataji             #+#    #+#             */
-/*   Updated: 2021/12/01 23:35:08 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/15 22:45:18 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+void	my_bzero(void *s, size_t n)
 {
 	unsigned char	*str;
 	size_t			i;

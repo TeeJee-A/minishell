@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 11:58:48 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/15 13:42:16 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/16 08:37:18 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	builtin_commands(t_execlst *el)
 		return (2);
 	if (el && el->cmd && el->cmd[0])
 	{
-		if (!(ft_strcmp(el->cmd[0], "echo")))
+		if (!(my_strcmp(el->cmd[0], "echo")))
 		{
 			if (el->cmd[1] == NULL && !el->red)
 			{
@@ -46,17 +46,17 @@ int	builtin_commands(t_execlst *el)
 			else
 				ck = echo_cmd(el);
 		}
-		else if (!(ft_strcmp(el->cmd[0], "exit")))
+		else if (!(my_strcmp(el->cmd[0], "exit")))
 			exit_cmd();
-		else if (!(ft_strcmp(el->cmd[0], "pwd")))
+		else if (!(my_strcmp(el->cmd[0], "pwd")))
 			ck = pwd_cmd(el);
-		else if (!(ft_strcmp(el->cmd[0], "cd")))
+		else if (!(my_strcmp(el->cmd[0], "cd")))
 			ck = cd_cmd(el->cmd);
-		else if (!(ft_strcmp(el->cmd[0], "env")))
+		else if (!(my_strcmp(el->cmd[0], "env")))
 			ck = env_cmd(el);
-		else if (!(ft_strcmp(el->cmd[0], "export")))
+		else if (!(my_strcmp(el->cmd[0], "export")))
 			ck = export_cmd(el->cmd, el);
-		else if (!(ft_strcmp(el->cmd[0], "unset")))
+		else if (!(my_strcmp(el->cmd[0], "unset")))
 		{
 			ck = unset_env(el->cmd);
 			ck = unset_exp(el->cmd);

@@ -29,7 +29,6 @@ SRC_MINI = execution/main.c\
 	execution/export/get_exp_utils2.c\
 	execution/unset_cmd.c\
 	execution/export/ft_split_exp_first.c\
-	execution/path_exec.c\
 	execution/builtin_commands.c\
 	execution/print_error.c\
 	execution/execution.c
@@ -44,24 +43,29 @@ SRC_SIG = src/signals/signals1.c
 SRCS = $(SRCS_LIBFT) $(SRC_PRS) $(SRC_EXEC) $(SRC_ENV) $(SRC_SIG) $(SRC_MINI)\
 src/main.c
 
-CFLAGS = -Wall -Werror -Wextra  -g -I/goinfre/ataji/.brew/opt/readline/include
+CFLAGS = -Wall -Werror -Wextra -I/goinfre/ataji/.brew/opt/readline/include
 CC = cc
 RM = rm
 OBJS = $(SRCS:.c=.o)
 
 all:$(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(LIBFT)
 	$(CC) $(CFLAGS) $(LIBFT) -lreadline -L/goinfre/ataji/.brew/opt/readline/lib -o $(NAME) $^
+
+$(LIBFT):
+	make -C execution/libft
 
 %.o: %.c $(INC)
 	$(CC) $(CFLAGS) -c $< -o $@ 
 
 clean:
 	@$(RM) $(OBJS)
+	@make clean -C execution/libft
 
 fclean : clean
 	@$(RM) $(NAME)
+	@make fclean -C execution/libft
 
 re : fclean all
 

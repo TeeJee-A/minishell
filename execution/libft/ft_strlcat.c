@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 17:02:56 by ataji             #+#    #+#             */
-/*   Updated: 2022/10/31 23:14:00 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/15 22:48:09 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # include<stdio.h>
 # include<unistd.h>
 
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+size_t	my_strlcat(char *dst, const char *src, size_t dstsize)
 {
 	size_t	i;
 	size_t	j;

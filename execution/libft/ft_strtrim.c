@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataji <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 21:54:40 by ataji             #+#    #+#             */
-/*   Updated: 2021/12/01 22:59:04 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/15 22:49:02 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_search(const char *s, char c)
+static int	my_search(const char *s, char c)
 {
 	int	i;
 
@@ -26,7 +26,7 @@ static int	ft_search(const char *s, char c)
 	return (0);
 }	
 
-char	*ft_strtrim(char const *s1, char const *set)
+char	*my_strtrim(char const *s1, char const *set)
 {
 	int		sl;
 	int		i;
@@ -37,14 +37,14 @@ char	*ft_strtrim(char const *s1, char const *set)
 	j = 0;
 	if (!s1 || !set)
 		return (NULL);
-	sl = ft_strlen(s1);
+	sl = my_strlen(s1);
 	sl--;
-	while (s1 && (ft_search(set, s1[i]) == 1))
+	while (s1 && (my_search(set, s1[i]) == 1))
 		i++;
-	while (sl >= 0 && (ft_search(set, s1[sl]) == 1))
+	while (sl >= 0 && (my_search(set, s1[sl]) == 1))
 		sl--;
 	if (sl - i < 0)
-		return (ft_strdup(""));
+		return (my_strdup(""));
 	str = (char *)malloc(sl - i + 2 * sizeof(char));
 	if (!str)
 		return (NULL);

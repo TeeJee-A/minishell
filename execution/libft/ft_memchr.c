@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataji <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 18:43:14 by ataji             #+#    #+#             */
-/*   Updated: 2021/12/01 20:07:06 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/15 22:46:03 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+void	*my_memchr(const void *s, int c, size_t n)
 {
 	unsigned char	k;
 	unsigned char	*str;

@@ -6,13 +6,13 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 10:19:25 by ataji             #+#    #+#             */
-/*   Updated: 2022/10/31 23:00:52 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/15 22:48:13 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 
-size_t	ft_strlcpy(char *dest, const char *src, size_t dstsize)
+size_t	my_strlcpy(char *dest, const char *src, size_t dstsize)
 {
 	size_t	i;
 
