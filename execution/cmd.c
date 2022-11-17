@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 06:01:07 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/16 16:01:38 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/17 09:11:56 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ char	*add_path(t_execlst *el)
 			path = join_path(el);
 			break ;
 		}
+		else if (el->cmd[0][0] == '.' && el->cmd[0][1] == '/')
+			path = creat_execution_file(el->cmd[0]);
 		dt = dt->next;
 	}
 	return (path);

@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 10:54:02 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/16 16:02:44 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/17 09:49:19 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,16 @@ char	*creat_path(char **line, char *path)
 	return (NULL);
 }
 
+char	*creat_execution_file(char *path)
+{
+	int		i;
+	char	*new_path;
+
+	i = 2;
+	new_path = my_substr(path, i, my_strlen(path));
+	return (new_path);
+}
+
 char	*join_path(t_execlst *el)
 {
 	char		*path;
@@ -162,6 +172,8 @@ char	*join_path(t_execlst *el)
 		print_error(element->cmd[i], "is a directory", 126);
 	else if (element->cmd[i][j] == '/' && element->cmd[i][j + 1])
 		path = relative_path(element->cmd[i]);
+	else if (element->cmd[i][j] == '.' && element->cmd[i][j + 1] == '/')
+		path = creat_execution_file(element->cmd[i]);
 	else if (element->cmd[i])
 		path = creat_path(element->cmd, path);
 	return (path);
@@ -213,7 +225,11 @@ void	execve_function(t_execlst *el)
 		if (pid < 0)
 			return (perror("fork"));
 		if (pid == 0)
+		{
+			signal(SIGINT, SIG_DFL);
+			signal(SIGQUIT, SIG_DFL);
 			cmd(el, __pipe);
+		}
 		postexec(el, __pipe);
 		el = el->next;
 	}

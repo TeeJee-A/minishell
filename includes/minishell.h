@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 19:17:59 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/16 19:37:59 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/17 09:11:46 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,6 +176,7 @@ void	preexec(t_execlst *el, int pipe[2]);
 void	postexec(t_execlst *el, int pipe[2]);
 int		check_if_builtin(t_execlst *el);
 void	sort_env(t_env *dt);
+char	*creat_execution_file(char *path);
 // void	sort_env(char **line);
 // int     check_export(char *line);
 t_env	*init_envlst(void);
