@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 19:17:59 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/17 09:11:46 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/17 10:09:33 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	add_variable(char **line, t_env *dt);
 void	exit_cmd(void);
 void	mini_unset_env(t_env *tmp, t_env *tmp2);
 void	mini_unset_exp(t_env *tmp, t_env *tmp2);
-int     mini_echo(t_execlst *el);
+int	    mini_echo(t_execlst *el);
 int     check_directory(char **line);
 
 /*********************************************************/

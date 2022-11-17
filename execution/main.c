@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 10:54:02 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/17 09:49:19 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/17 10:20:28 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,20 @@ int	check_access_file(t_execlst *el, int check_next)
 	return (1);
 }
 
+void	dup_function(int fd_out, int fd_in)
+{
+	if (fd_out != -1)
+	{
+		dup2(fd_out, 1);
+		close(fd_out);
+	}
+	if (fd_in != -1)
+	{
+		dup2(fd_in, 0);
+		close(fd_in);
+	}
+}
+
 int	ft_red(t_execlst *el, int *dup1, int *dup0)
 {
 	int fd_out;
@@ -91,16 +105,7 @@ int	ft_red(t_execlst *el, int *dup1, int *dup0)
 			fd_in = el->red->fd;
 		el->red = el->red->next;
 	}
-	if (fd_out != -1)
-	{
-		dup2(fd_out, 1);
-		close(fd_out);
-	}
-	if (fd_in != -1)
-	{
-		dup2(fd_in, 0);
-		close(fd_in);
-	}
+	dup_function(fd_out, fd_in);
 	return (0);
 }
 
