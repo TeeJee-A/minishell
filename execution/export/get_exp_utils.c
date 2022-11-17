@@ -6,29 +6,13 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 21:05:25 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/16 08:32:39 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/17 17:35:56 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-int	ft_check_plus_exp(char *line)
-{
-	int		i;
-
-	i = 0;
-	while (line[i])
-	{
-		if (line[i] == '+' && line[i + 1] != '=')
-			return (2);
-		if (line[i] == '+' && line[i + 1] == '=')
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-void	ft_replace_value_variable_exp(t_env *dt, char *var, char *val)
+void	add_before_with_plus_one(char *var, t_env *dt)
 {
 	t_env	*tmp;
 
@@ -40,47 +24,14 @@ void	ft_replace_value_variable_exp(t_env *dt, char *var, char *val)
 		tmp->next = init_explst();
 		tmp = tmp->next;
 	}
-	tmp->var = ft_strdup_exp(var);
-	tmp->val = ft_strdup_exp(val);
-	tmp->sz_val = ft_strlen_exp(tmp->val);
-	tmp->sz_var = ft_strlen_exp(tmp->var);
-}
-
-int	ft_replace_value_exp(t_env *dt, char *var, char *val)
-{
-	t_env	*tmp;
-
-	tmp = dt;
-	while (tmp)
+	if (!tmp->val)
 	{
-		if (!ft_strcmp_exp(tmp->var, var))
-		{
-			if (!tmp->val)
-			{
-				tmp->val = ft_strdup_exp(val);
-				tmp->sz_val = ft_strlen_exp(val);
-			}
-			else
-				tmp->val = ft_strjoin_exp(tmp->val, val);
-			return (1);
-		}
-		tmp = tmp->next;
+		tmp->var = var;
+		tmp->val = ft_strdup_exp("");
+		tmp->sz_val = 1;
+		tmp->sz_var = ft_strlen_exp(var);
+		return ;
 	}
-	return (0);
-}
-
-int	plus_cmp_exp(char *var)
-{
-	t_env	*dt;
-
-	dt = g_data.g_explst;
-	while (dt)
-	{
-		if (!ft_strcmp_exp(var, dt->var))
-			return (1);
-		dt = dt->next;
-	}
-	return (0);
 }
 
 void	add_before_with_plus_exp(char *var, t_env *tmp)
@@ -98,21 +49,9 @@ void	add_before_with_plus_exp(char *var, t_env *tmp)
 		}
 		else
 		{
-			while (tmp && tmp->next)
-				tmp = tmp->next;
-			if (tmp)
-			{
-				tmp->next = init_explst();
-				tmp = tmp->next;
-			}
+			add_before_with_plus_one(var, tmp);
 			if (!tmp->val)
-			{
-				tmp->var = var;
-				tmp->val = ft_strdup_exp("");
-				tmp->sz_val = 1;
-				tmp->sz_var = ft_strlen_exp(var);
 				return ;
-			}
 		}
 		tmp = tmp->next;
 	}
@@ -129,13 +68,13 @@ void	ft_concat_plus_exp(t_env *dt, char *line)
 	tmp = dt;
 	condition = 0;
 	tab = ft_split_exp(line, '=');
-    var = ft_substr_exp(tab[0], 0, (ft_strlen_exp(tab[0]) - 1));
+	var = ft_substr_exp(tab[0], 0, (ft_strlen_exp(tab[0]) - 1));
 	if (!tab[1])
 	{
 		add_before_with_plus_exp(var, tmp);
 		return ;
 	}
-    val = ft_strdup_exp(tab[1]);
+	val = ft_strdup_exp(tab[1]);
 	if (ft_replace_value_exp(tmp, var, val) == 1)
 		return ;
 	ft_replace_value_variable_exp(tmp, var, val);

@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 01:10:03 by kfaouzi           #+#    #+#             */
-/*   Updated: 2022/11/10 19:05:55 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/17 20:40:14 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ t_execlst	*expand_list(t_execlst *el)
 		while (t)
 		{
 			t->fd = expand_red(t->type, &t->file, t->dlmtr);
+			t->__errno = __check_open_error(t->fd, errno);
 			t = t->next;
 		}
 		tmp = tmp->next;

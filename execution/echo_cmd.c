@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 19:38:47 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/17 10:21:54 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/17 16:06:43 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,20 +41,7 @@ int	echo_heredc(t_execlst *el)
 	return (1);
 }
 
-void	print_echo(t_execlst *el)
-{
-	int	i;
-
-	i = 1;
-	while (el->cmd[i])
-	{
-		printf("%s ", el->cmd[i]);
-		i++;
-	}
-	printf("\n");
-}
-
-int	red_echo_two(t_execlst *el)
+int	red_in_echo(t_execlst *el)
 {
 	t_red	*red;
 
@@ -67,20 +54,12 @@ int	red_echo_two(t_execlst *el)
 	return (0);
 }
 
-int	red_echo(t_execlst *el)
+int	red_out_echo(t_execlst *el, int i)
 {
-	int		i;
-	int		n;
-	int		j;
 	t_red	*red;
+	int		j;
 
-	n = 1;
 	red = el->red;
-	while (el->cmd[n] && !my_strcmp(el->cmd[n], "-n"))
-		n++;
-	i = n - 1;
-	if (red_echo_two(el))
-		return (1);
 	while (el->cmd[++i])
 	{
 		j = 0;
@@ -89,6 +68,25 @@ int	red_echo(t_execlst *el)
 		if (el->cmd[i])
 			write(red->fd, " ", 1);
 	}
+	return (0);
+}
+
+int	red_echo(t_execlst *el)
+{
+	int		i;
+	int		n;
+	t_red	*red;
+
+	n = 1;
+	red = el->red;
+	while (el->cmd[n] && !my_strcmp(el->cmd[n], "-n"))
+		n++;
+	i = n - 1;
+	if (red->type == APPND || red->type == REDOUT)
+		if (red_out_echo(el, i))
+			return (1);
+	if (red_in_echo(el))
+		return (1);
 	if (n == 1)
 		write(red->fd, "\n", 1);
 	return (1);

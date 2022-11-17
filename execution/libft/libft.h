@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 18:05:43 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/15 22:50:46 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/17 20:53:52 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include<stdlib.h>
 # include<unistd.h>
-#include<stdio.h>
+# include<stdio.h>
 
 int		my_atoi(const char *str);
 void	my_bzero(void *s, size_t n);
@@ -51,7 +51,7 @@ void	my_putchar_fd(char c, int fd);
 void	my_putstr_fd(char *s, int fd);
 void	my_putendl_fd(char *s, int fd);
 void	my_putnbr_fd(int n, int fd);
-int     count_words(const char *str, char c);
-int	    my_strcmp(const char *s1, const char *s2);
-int     my_strlendm(char **tab);
+int		count_words(const char *str, char c);
+int		my_strcmp(const char *s1, const char *s2);
+int		my_strlendm(char **tab);
 #endif

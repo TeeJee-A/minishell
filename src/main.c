@@ -6,16 +6,16 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 07:08:40 by kfaouzi           #+#    #+#             */
-/*   Updated: 2022/11/17 09:15:29 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/17 20:39:03 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/utils_char_str.h"
 
-void token_and_exec(char *line, t_tok *tokens, t_execlst *el)
+void	token_and_exec(char *line, t_tok *tokens, t_execlst *el)
 {
-	char *t;
-	t_execlst *el1;
+	char		*t;
+	t_execlst	*el1;
 
 	t = line;
 	line = ft_strtrim(line, STR_SPC);
@@ -34,7 +34,7 @@ void token_and_exec(char *line, t_tok *tokens, t_execlst *el)
 	}
 }
 
-void desplay_shell(char *line, t_tok *tokens, t_execlst *el)
+void	desplay_shell(char *line, t_tok *tokens, t_execlst *el)
 {
 	(void)tokens;
 	(void)el;
@@ -54,7 +54,7 @@ void desplay_shell(char *line, t_tok *tokens, t_execlst *el)
 	}
 }
 
-void run_minishell(void)
+void	run_minishell(void)
 {
 	signal(SIGINT, stay_in_shell);
 	signal(SIGQUIT, SIG_IGN);
@@ -62,9 +62,9 @@ void run_minishell(void)
 	desplay_shell(NULL, NULL, NULL);
 }
 
-int my_strlendm(char **str)
+int	my_strlendm(char **str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -72,10 +72,10 @@ int my_strlendm(char **str)
 	return (i);
 }
 
-int main(int ac, char **av, char **env)
+int	main(int ac, char **av, char **env)
 {
-	t_env *dt;
-	t_env *dt1;
+	t_env	*dt;
+	t_env	*dt1;
 
 	(void)ac;
 	(void)av;

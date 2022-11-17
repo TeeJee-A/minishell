@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 19:52:23 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/16 09:17:57 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/17 10:57:58 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int	pwd_cmd(t_execlst *el)
 	if (el->red && el->red->fd)
 	{
 		j = 0;
+		while (el->red->next)
+			el->red = el->red->next;
 		while (cwd[j])
 		{
 			write (el->red->fd, &cwd[j], 1);

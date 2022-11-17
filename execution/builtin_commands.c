@@ -6,11 +6,24 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 11:58:48 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/17 10:09:12 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/17 16:07:51 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+
+void	print_echo(t_execlst *el)
+{
+	int	i;
+
+	i = 1;
+	while (el->cmd[i])
+	{
+		printf("%s ", el->cmd[i]);
+		i++;
+	}
+	printf("\n");
+}
 
 int	mini_echo(t_execlst *el)
 {
@@ -29,19 +42,20 @@ int	mini_echo(t_execlst *el)
 
 int	mini_builtin_commands(t_execlst *el)
 {
-	int	check_next;
-
-	check_next = 0;
-	if (!el->next)
-	{
-		check_next = 1;
-		if (!check_access_file(el, check_next))
-			return (2);
-	}
-	check_access_file(el, check_next);
-	return (0);
+	return (check_access_file(el));
 }
 
+	// int	check_next;
+
+	// check_next = 0;
+	// if (!el->next)
+	// {
+	// 	check_next = 1;
+	// 	if (!check_access_file(el, check_next))
+	// 		return (2);
+	// }
+	// check_access_file(el, check_next);
+	// return (0);
 int	environment_commands(t_execlst *el)
 {
 	int	ck;
@@ -61,11 +75,11 @@ int	environment_commands(t_execlst *el)
 
 int	builtin_commands(t_execlst *el)
 {
-	int		ck;
+	int	ck;
 
 	ck = 0;
-	if (mini_builtin_commands(el) == 2)
-		return (2);
+	if (mini_builtin_commands(el) == -1)
+		return (-1);
 	if (el && el->cmd && el->cmd[0])
 	{
 		if (!(my_strcmp(el->cmd[0], "echo")))

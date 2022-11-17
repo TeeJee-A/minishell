@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 08:59:33 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/12 08:57:02 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/17 16:46:01 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,16 +63,3 @@ char	*ft_strdup_env(const char *s1)
 	str[i] = '\0';
 	return (str);
 }
-
-// t_env	*init_envlst_env(void)
-// {
-// 	t_env	*e;
-
-// 	e = malloc(sizeof(t_env));
-// 	e->var = NULL;
-// 	e->val = NULL;
-//     e->sz_var = 0;
-//     e->sz_val = 0;
-// 	e->next = NULL;
-// 	return (e);
-// }

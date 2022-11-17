@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 01:21:07 by ibenmain          #+#    #+#             */
-/*   Updated: 2022/11/10 19:06:00 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/17 20:40:16 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,13 @@ int	ft_open(t_enum type, char **file)
 		return (open(*file, O_RDONLY));
 	else
 		return (open(*file, O_APPEND | O_CREAT | O_RDWR, 0644));
+}
+
+int	__check_open_error(int fd, int __errno)
+{
+	if (fd == -1)
+		return (__errno);
+	return (0);
 }
 
 void	put_in_fd(char *del, int fd, int nbdel)

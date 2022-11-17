@@ -6,14 +6,14 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 17:02:56 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/15 22:48:09 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/17 20:51:54 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-# include<stdlib.h>
-# include<stdio.h>
-# include<unistd.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <unistd.h>
 
 size_t	my_strlcat(char *dst, const char *src, size_t dstsize)
 {

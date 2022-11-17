@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 19:17:59 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/17 10:09:33 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/17 20:50:36 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,9 @@ void	add_variable(char **line, t_env *dt);
 void	exit_cmd(void);
 void	mini_unset_env(t_env *tmp, t_env *tmp2);
 void	mini_unset_exp(t_env *tmp, t_env *tmp2);
-int	    mini_echo(t_execlst *el);
-int     check_directory(char **line);
+int		mini_echo(t_execlst *el);
+int		check_directory(char **line);
+void	print_echo(t_execlst *el);
 
 /*********************************************************/
 /********************** get_export ***********************/
@@ -152,6 +153,10 @@ char	*ft_substr_env(char const *s, unsigned int start, size_t len);
 t_env	*init_envlst(void);
 void	get_env(t_env *dt);
 
+char	**add_variable_env_one(char **line, t_env *dt, char **tab, int i);
+void	add_variable_env_two(t_env *dt, char **tab, char **line);
+void	add_variable_env_three(t_env *dt, char **tab);
+
 /*********************************************************/
 /********************* exec_commands *********************/
 /*********************************************************/
@@ -182,7 +187,7 @@ char	*creat_execution_file(char *path);
 t_env	*init_envlst(void);
 int		ft_check_plus(char *line);
 void	ft_concat_plus(t_env *dt, char *line);
-int     ft_red(t_execlst *el, int *dup1, int *dup0);
+int		ft_red(t_execlst *el, int *dup1, int *dup0);
 
 /*********************************************************/
 /************************ errors *************************/
@@ -190,7 +195,7 @@ int     ft_red(t_execlst *el, int *dup1, int *dup0);
 
 void	print_error_builtin(char *s1, char *s2, int error);
 void	print_error(char *s1, char *s2, int error);
-int		check_access_file(t_execlst *el, int check_next);
+int		check_access_file(t_execlst *el);
 
 /*********************************************************/
 /*********************************************************/

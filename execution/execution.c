@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 14:16:38 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/17 09:51:49 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/17 21:43:47 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,11 @@ int	check_redir(t_execlst *el)
 
 void	signal_function(int status)
 {
+	g_data.exit_status = 0;
 	if (WIFSIGNALED(status))
 	{
 		if (WTERMSIG(status) == SIGINT)
-		{
 			printf("\n");
-		}
 		if (WTERMSIG(status) == SIGQUIT)
 			printf("Quit: 3\n");
 		g_data.exit_status = 128 + WTERMSIG(status);
@@ -46,21 +45,19 @@ void	mini_token_and_exec(t_execlst *el)
 {
 	int	fd;
 	int	status;
-	int	cmd;
 
 	fd = dup(STDIN_FILENO);
-	cmd = 0;
 	g_data.id_cat = 1;
 	if (!el->next)
 	{
 		if (!check_if_builtin(el))
 		{
-			builtin_commands(el);
-			cmd = 1;
+			if (builtin_commands(el) == -1)
+				return ;
 		}
+		else
+			execve_function(el);
 	}
-	if (!el->next && cmd == 0)
-		execve_function(el);
 	if (el->next)
 		execve_function(el);
 	while (1)

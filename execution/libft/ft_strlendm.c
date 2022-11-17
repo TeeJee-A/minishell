@@ -6,20 +6,20 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 15:38:23 by yataji            #+#    #+#             */
-/*   Updated: 2022/11/15 22:48:24 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/17 20:53:15 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int my_strlendm(char **tab)
+int	my_strlendm(char **tab)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    if (!tab)
-        return (0);
-    while (tab[i])
-        i++;
-    return (i);
+	i = 0;
+	if (!tab)
+		return (0);
+	while (tab[i])
+		i++;
+	return (i);
 }

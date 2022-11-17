@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 21:31:43 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/10 18:40:49 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/17 17:37:57 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ void	ft_swapint(int *a, int *b)
 
 void	sort_exp(t_env *dt)
 {
-	t_env *tmp;
-	t_env *tmp1;
+	t_env	*tmp;
+	t_env	*tmp1;
 
 	tmp = dt;
 	tmp1 = dt;
