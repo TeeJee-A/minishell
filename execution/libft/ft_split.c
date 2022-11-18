@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 20:29:12 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/15 22:47:22 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/18 10:59:45 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,7 @@ static char	**set_words(char const *s, char c)
 	int		k;
 	char	**tab;
 
-	tab = (char **)malloc((count_words(s, c) + 1) * sizeof(char *));
-	if (!tab)
-		return (NULL);
+	tab = ft_malloc((count_words(s, c) + 1) * sizeof(char *));
 	i = 0;
 	k = 0;
 	while (s[i])

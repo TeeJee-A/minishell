@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 10:43:06 by kfaouzi           #+#    #+#             */
-/*   Updated: 2022/11/10 19:05:43 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/18 11:03:37 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	add_sqt(char *line, char **expand_str)
 	str = *expand_str;
 	while (line[i] != '\'')
 		i++;
-	tmp = malloc(i + 1);
+	tmp = ft_malloc(i + 1);
 	ft_memcpy(tmp, line, i);
 	tmp[i] = '\0';
 	*expand_str = concat(str, tmp);
@@ -78,7 +78,7 @@ int	handel_dlr(char *line, char **expand_str)
 	}
 	while (line[i] && !ft_strchr(STR_SPECIAL, line[i]))
 		i++;
-	var = malloc(i + 1);
+	var = ft_malloc(i + 1);
 	ft_memcpy(var, line, i);
 	var[i] = 0;
 	tmp = get_envval(var);

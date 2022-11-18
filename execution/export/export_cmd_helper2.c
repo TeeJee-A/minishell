@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 18:49:43 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/17 22:21:55 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/18 10:50:38 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,15 @@ char	**add_var_helper2(char **line, t_env *dt, char **tab, int i)
 	}
 	else
 	{
-		tab = (char **)malloc(2 * sizeof(char *));
+		tab = malloc(2 * sizeof(char *));
+		if (!tab)
+			ft_exit(1);
 		tab[0] = line[i];
 		tab[1] = NULL;
 	}
 	return (tab);
 }
 
-// c k tmp tab
 void	add_var_helper3(char **line, int i)
 {
 	if (ft_check_plus_exp(line[i]) == 2)
@@ -83,8 +84,6 @@ void	add_variable_exp(char **line, t_env *dt)
 	tmp = dt;
 	while (line[++norm_exp.i])
 	{
-		if (handle_special_char_exp(line) == 1)
-			return ;
 		norm_exp.tab = add_var_helper2(line, tmp, norm_exp.tab, norm_exp.i);
 		norm_exp.k = exist_or_not_exp(norm_exp.tab, line);
 		add_var_helper3(line, norm_exp.i);

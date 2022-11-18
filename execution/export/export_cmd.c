@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 01:12:48 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/17 21:51:40 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/17 23:01:29 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,8 @@ int	export_cmd(char **line, t_execlst *el)
 	if (my_strlendm(line) > 1)
 	{
 		t = 1;
+		if (handle_special_char_exp(line) == 1)
+			return (1);
 		add_variable_exp(line, dt_exp);
 		add_variable_env(line, dt_env);
 	}

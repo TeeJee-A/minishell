@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 08:06:22 by kfaouzi           #+#    #+#             */
-/*   Updated: 2022/11/10 19:04:05 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/18 11:02:35 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,7 @@ char	*ft_itoa(int n)
 
 	tmp = n;
 	size = ft_nbrlen(tmp);
-	itoa = (char *)malloc(size + 1);
-	if (!itoa)
-		return (NULL);
+	itoa = ft_malloc(size + 1);
 	itoa[size--] = '\0';
 	if (n == 0)
 		itoa[size] = '0';

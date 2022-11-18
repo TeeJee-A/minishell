@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 03:48:42 by kfaouzi           #+#    #+#             */
-/*   Updated: 2022/11/10 19:03:49 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/18 11:02:11 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*getval(char *s, int start, int len)
 		s_len = sz;
 	else
 		s_len = len + 1;
-	sub_tkn = malloc(s_len);
+	sub_tkn = ft_malloc(s_len);
 	sub_tkn[--s_len] = CHR_END;
 	while (--s_len >= 0)
 		sub_tkn[s_len] = s[s_len + start];
@@ -71,7 +71,7 @@ char	*concat(char *s1, char *s2)
 		i++;
 	while (s2[j])
 		j++;
-	new = malloc(i + j + 1);
+	new = ft_malloc(i + j + 1);
 	new[i + j] = CHR_END;
 	while (--j >= 0)
 		new[i + j] = s2[j];

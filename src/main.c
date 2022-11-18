@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 07:08:40 by kfaouzi           #+#    #+#             */
-/*   Updated: 2022/11/17 20:39:03 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/18 12:19:51 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,9 @@ void	desplay_shell(char *line, t_tok *tokens, t_execlst *el)
 			add_history(line);
 			token_and_exec(line, NULL, NULL);
 		}
+		ft_free_inside();
 	}
+	ft_free_env_exp();
 }
 
 void	run_minishell(void)
@@ -79,6 +81,7 @@ int	main(int ac, char **av, char **env)
 
 	(void)ac;
 	(void)av;
+	g_data.garbege = NULL;
 	g_data.g_env = env;
 	g_data.g_exp = env;
 	g_data.g_envlst = init_envlst();
@@ -97,5 +100,7 @@ int	main(int ac, char **av, char **env)
 		get_exp(dt1);
 	}
 	run_minishell();
+	while (1)
+		;
 	return (0);
 }

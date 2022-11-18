@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 08:59:33 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/17 16:46:01 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/18 10:49:36 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,17 @@ char	*ft_substr_env(char const *s, unsigned int start, size_t len)
 			len = ft_strlen_env(s);
 		str = (char *)malloc((len + 1) * sizeof(char));
 		if (!str)
-			return (NULL);
+			ft_exit(1);
 		while (i < len)
 			str[i++] = s[start++];
 	}
 	else
+	{
 		str = malloc(1);
-	str[i] = '\0';
-	return (str);
+		if (!str)
+			ft_exit(1);
+	}
+	return (str[i] = '\0', str);
 }
 
 size_t	ft_strlen_env(const char *str)
@@ -54,7 +57,7 @@ char	*ft_strdup_env(const char *s1)
 	i = 0;
 	str = (char *)malloc(ft_strlen_env(s1) + 1 * sizeof(char));
 	if (!str)
-		return (NULL);
+		ft_exit(1);
 	while (s1[i] != '\0')
 	{
 		str[i] = s1[i];

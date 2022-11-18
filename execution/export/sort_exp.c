@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 21:31:43 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/17 17:37:57 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/18 10:52:31 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,17 @@ char	*ft_substr_exp(char const *s, unsigned int start, size_t len)
 			len = ft_strlen_exp(s);
 		str = (char *)malloc((len + 1) * sizeof(char));
 		if (!str)
-			return (NULL);
+			ft_exit(1);
 		while (i < len)
 			str[i++] = s[start++];
 	}
 	else
+	{
 		str = malloc(1);
-	str[i] = '\0';
-	return (str);
+		if (!str)
+			ft_exit(1);
+	}
+	return (str[i] = '\0', str);
 }
 
 size_t	ft_strlen_exp(const char *str)

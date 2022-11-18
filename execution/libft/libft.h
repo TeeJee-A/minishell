@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 18:05:43 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/17 20:53:52 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/18 12:00:31 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include<stdlib.h>
 # include<unistd.h>
 # include<stdio.h>
+#include "../../includes/parsing.h"
+#include "../../includes/minishell.h"
 
 int		my_atoi(const char *str);
 void	my_bzero(void *s, size_t n);

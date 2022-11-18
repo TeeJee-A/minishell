@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 21:13:19 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/17 17:40:35 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/18 10:51:41 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*get_var_name_exp(const char *s, int index)
 
 	var_name = malloc(index + 1);
 	if (!var_name)
-		return (NULL);
+		ft_exit(1);
 	i = 0;
 	while (i < index)
 	{
@@ -50,7 +50,7 @@ char	*get_var_value_exp(const char *s, int index)
 		return (NULL);
 	var_value = malloc(ft_strlen_exp(s) - index + 1);
 	if (!var_value)
-		return (NULL);
+		ft_exit(1);
 	j = 0;
 	while (s[index])
 	{
@@ -69,7 +69,7 @@ char	**set_words_exp(char const *s, char c)
 
 	tab = malloc(3 * sizeof(char *));
 	if (!tab)
-		return (NULL);
+		ft_exit(1);
 	i = 0;
 	while (s[i] && s[i] != c)
 		i++;

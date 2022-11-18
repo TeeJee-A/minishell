@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 07:38:32 by kfaouzi           #+#    #+#             */
-/*   Updated: 2022/11/17 20:48:47 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/18 11:58:19 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,22 +27,6 @@ typedef enum s_enum
 	APPND,
 	NON,
 }t_enum;
-
-typedef struct s_norm_exp
-{
-	int		i;	
-	int		k;
-	int		c;
-	char	**tab;	
-}	t_norm_exp;
-
-typedef struct s_norm
-{
-	int		i;	
-	int		k;
-	int		c;
-	char	**tab;	
-}	t_norm;
 
 typedef struct s_tok
 {
@@ -77,10 +61,17 @@ typedef struct s_env
 	struct s_env	*next;
 }t_env;
 
+typedef struct s_gc
+{
+	void		*_free;
+	struct s_gc	*next;
+}   t_gc;
+
 typedef struct s_data
 {
 	t_env			*g_envlst;
 	t_env			*g_explst;
+	t_gc			*garbege;
 	int				is_running;
 	int				exit_status;
 	char			**g_env;
@@ -151,5 +142,11 @@ void			stay_in_shell(int _signal);
 void			add_garbage_in(void *data);
 void			signals(void);
 
+// void			add_to_garbege(t_gc **data, t_gc *new);
+// t_gc			*ft_new_gc(void *data);
+// void			*ft_malloc(size_t size);
+// void			ft_free_inside(void);
+// void			ft_free_env_exp(void);
+// void			ft_exit(int ex);
 // int			ft_red(t_execlst *el);
 #endif

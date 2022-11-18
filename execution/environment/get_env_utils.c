@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 08:55:47 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/17 17:21:48 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/18 10:48:08 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*get_var_name_env(const char *s, int index)
 
 	var_name = malloc(index + 1);
 	if (!var_name)
-		return (NULL);
+		ft_exit(1);
 	i = 0;
 	while (i < index)
 	{
@@ -50,7 +50,7 @@ char	*get_var_value_env(const char *s, int index)
 		return (NULL);
 	var_value = malloc(ft_strlen_env(s) - index + 1);
 	if (!var_value)
-		return (NULL);
+		ft_exit(1);
 	j = 0;
 	while (s[index])
 	{
@@ -69,7 +69,7 @@ char	**set_words_env(char const *s, char c)
 
 	tab = malloc(3 * sizeof(char *));
 	if (!tab)
-		return (NULL);
+		ft_exit(1);
 	i = 0;
 	while (s[i] && s[i] != c)
 		i++;

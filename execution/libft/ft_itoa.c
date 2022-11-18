@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 15:05:33 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/15 22:45:59 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/18 10:59:40 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,7 @@ char	*my_itoa(int n)
 
 	k = n;
 	size = my_number(n);
-	str = (char *)malloc((size + 1) * sizeof(char));
-	if (!str)
-		return (NULL);
+	str = ft_malloc((size + 1) * sizeof(char));
 	str[size--] = '\0';
 	if (k < 0)
 	{

@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 10:55:41 by ibenmain          #+#    #+#             */
-/*   Updated: 2022/11/10 19:03:26 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/18 11:01:02 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	**ft_other_split(char *s, char c, int i, int j)
 
 	if (!s)
 		return (NULL);
-	tab = (char **)malloc((ft_count(s, c) + 1) * sizeof(char *));
+	tab = ft_malloc((ft_count(s, c) + 1) * sizeof(char *));
 	while (s[i])
 	{
 		while (s[i] && s[i] == c)

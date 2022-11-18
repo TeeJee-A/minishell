@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 19:17:59 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/17 20:50:36 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/18 11:59:02 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include<errno.h>
 # include<string.h>
 # include"../execution/libft/libft.h"
-# include"../includes/parsing.h"
+# include"parsing.h"
 # include<fcntl.h>
 # include<stdbool.h>
 # include<signal.h>
@@ -30,6 +30,22 @@
 
 # define W 1
 # define R 0
+
+typedef struct s_norm_exp
+{
+	int		i;	
+	int		k;
+	int		c;
+	char	**tab;	
+}	t_norm_exp;
+
+typedef struct s_norm
+{
+	int		i;	
+	int		k;
+	int		c;
+	char	**tab;	
+}	t_norm;
 
 /*********************************************************/
 /******************* builtin_commands ********************/
@@ -56,30 +72,32 @@ void	print_echo(t_execlst *el);
 /********************** get_export ***********************/
 /*********************************************************/
 
-/********************** exp_empty ************************/
-void	get_exp_empty(t_env *dt);
-
 size_t	ft_strlen_exp(const char *str);
 char	*ft_substr_exp(char const *s, unsigned int start, size_t len);
 void	ft_swap(char **a, char **b);
 void	ft_swapint(int *a, int *b);
 void	sort_exp(t_env *dt);
 
+/********************** exp_empty ************************/
+void	get_exp_empty(t_env *dt);
+/*********************************************************/
 t_env	*init_explst(void);
 void	get_exp(t_env *dt);
 
 int		ft_strcmp_exp(const char *s1, const char *s2);
 int		count_words_exp(const char *str, char c);
+
 char	**ft_freeing_exp(char **tab);
 char	*get_var_name_exp(const char *s, int index);
 char	*get_var_value_exp(const char *s, int index);
 char	**set_words_exp(char const *s, char c);
-char	**ft_split_exp(char const *s, char c);
+char	**ft_split_exp(char const *s, char c); //hna
 
 int		ft_check_plus_exp(char *line);
+void	ft_replace_value_variable_exp(t_env *dt, char *var, char *val);
 int		ft_replace_value_exp(t_env *dt, char *var, char *val);
 int		plus_cmp_exp(char *var);
-void	ft_replace_value_variable_exp(t_env *dt, char *var, char *val);
+
 void	add_before_with_plus_exp(char *var, t_env *tmp);
 void	ft_concat_plus_exp(t_env *dt, char *line);
 char	*ft_strdup_exp(const char *s1);
@@ -196,6 +214,17 @@ int		ft_red(t_execlst *el, int *dup1, int *dup0);
 void	print_error_builtin(char *s1, char *s2, int error);
 void	print_error(char *s1, char *s2, int error);
 int		check_access_file(t_execlst *el);
+
+/*********************************************************/
+/************************ errors *************************/
+/*********************************************************/
+
+void	add_to_garbege(t_gc **data, t_gc *new);
+t_gc	*ft_new_gc(void *data);
+void	*ft_malloc(size_t size);
+void	ft_free_inside(void);
+void	ft_free_env_exp(void);
+void	ft_exit(int ex);
 
 /*********************************************************/
 /*********************************************************/

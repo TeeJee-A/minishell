@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 14:26:05 by kfaouzi           #+#    #+#             */
-/*   Updated: 2022/11/10 19:06:57 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/18 09:52:07 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,28 +75,26 @@ t_tok	*tokenizer(char *l)
 	int		i;
 	t_tok	*tkn;
 	int		v;
-	char	*t;
 
 	tkn = NULL;
 	i = 0;
-	t = l;
 	while (l[i])
 	{
-		while (t[i] == CHR_SPC)
+		while (l[i] == CHR_SPC)
 			i++;
-		if (t[i] == CHR_OUTR || t[i] == CHR_INR)
-			v = add_tkn(&tkn, lstnew(getval(t + i, 0, skiptkn(t + i)), RED));
+		if (l[i] == CHR_OUTR || l[i] == CHR_INR)
+			v = add_tkn(&tkn, lstnew(getval(l + i, 0, skiptkn(l + i)), RED));
 		else if (l[i] == CHR_PIPE)
-			v = add_tkn(&tkn, lstnew(getval(t + i, 0, skiptkn(t + i)), PIPE));
+			v = add_tkn(&tkn, lstnew(getval(l + i, 0, skiptkn(l + i)), PIPE));
 		else if (l[i] == CHR_S_QT)
-			v = add_tkn(&tkn, lstnew(getval(t + i, 0, skiptkn(t + i)), S_QTE));
+			v = add_tkn(&tkn, lstnew(getval(l + i, 0, skiptkn(l + i)), S_QTE));
 		else if (l[i] == CHR_D_QT)
-			v = add_tkn(&tkn, lstnew(getval(t + i, 0, skiptkn(t + i)), D_QTE));
+			v = add_tkn(&tkn, lstnew(getval(l + i, 0, skiptkn(l + i)), D_QTE));
 		else
-			v = add_tkn(&tkn, lstnew(getval(t + i, 0, skiptkn(t + i)), WORD));
+			v = add_tkn(&tkn, lstnew(getval(l + i, 0, skiptkn(l + i)), WORD));
 		if (v)
 			return (NULL);
-		i += skiptkn(t + i);
+		i += skiptkn(l + i);
 	}
 	return (tkn);
 }

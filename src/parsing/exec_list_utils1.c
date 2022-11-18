@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:04:31 by kfaouzi           #+#    #+#             */
-/*   Updated: 2022/11/10 19:04:55 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/18 11:03:22 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_execlst	*init_execlst(void)
 {
 	t_execlst	*e;
 
-	e = malloc(sizeof(t_execlst));
+	e = ft_malloc(sizeof(t_execlst));
 	e->cmd = NULL;
 	e->red = NULL;
 	e->next = NULL;
@@ -35,7 +35,7 @@ t_execlst	*getcmd(t_execlst *e, char *val)
 	i = 0;
 	while (e->cmd && e->cmd[i])
 		i++;
-	new = malloc(sizeof(char *) * (i + 2));
+	new = ft_malloc(sizeof(char *) * (i + 2));
 	new[i + 1] = NULL;
 	new[i] = val;
 	if (!new[i])
@@ -62,7 +62,7 @@ t_red	*new_red(t_tok *tok)
 {
 	t_red	*head;
 
-	head = malloc(sizeof(t_red));
+	head = ft_malloc(sizeof(t_red));
 	head->type = get_redtype(tok->value);
 	head->file = tok->next->value;
 	head->next = NULL;

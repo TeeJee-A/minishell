@@ -23,6 +23,7 @@ SRC_MINI = execution/first_execution.c\
 	execution/cd_cmd.c\
 	execution/cmd.c\
 	execution/print_error.c\
+	execution/garbege.c\
 	execution/environment/get_env.c\
 	execution/environment/ft_split_one.c\
 	execution/environment/env_cmd.c\
@@ -83,8 +84,3 @@ fclean : clean
 
 re : fclean all
 
-run: all
-	clear
-	./minishell
-
-# -L/goinfre/kfaouzi/homebrew/opt/readline/lib

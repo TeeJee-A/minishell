@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 11:58:48 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/17 16:07:51 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/17 23:01:03 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,17 +45,6 @@ int	mini_builtin_commands(t_execlst *el)
 	return (check_access_file(el));
 }
 
-	// int	check_next;
-
-	// check_next = 0;
-	// if (!el->next)
-	// {
-	// 	check_next = 1;
-	// 	if (!check_access_file(el, check_next))
-	// 		return (2);
-	// }
-	// check_access_file(el, check_next);
-	// return (0);
 int	environment_commands(t_execlst *el)
 {
 	int	ck;

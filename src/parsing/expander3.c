@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 01:21:07 by ibenmain          #+#    #+#             */
-/*   Updated: 2022/11/17 20:40:16 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/18 11:03:50 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	sizehrdc(char *file)
 char	*expand_hrdc(int i, int j, char *name_file, char *file)
 {
 	i = sizehrdc(file);
-	name_file = malloc(i + 1);
+	name_file = ft_malloc(i + 1);
 	i = -1;
 	while (file[++i])
 	{

@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 16:55:58 by kfaouzi           #+#    #+#             */
-/*   Updated: 2022/11/15 22:27:11 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/18 11:03:04 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char	*ft_strdup(char *s1)
 	int		i;
 
 	i = 0;
-	new = (char *)malloc((ft_strlen(s1) + 1) * sizeof(char));
+	new = ft_malloc((ft_strlen(s1) + 1) * sizeof(char));
 	while (s1[i] != '\0')
 	{
 		new[i] = s1[i];

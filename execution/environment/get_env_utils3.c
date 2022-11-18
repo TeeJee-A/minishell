@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 17:21:05 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/17 17:21:54 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/18 10:49:58 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*ft_strjoin_env(char const *s1, char const *s2)
 	sl2 = ft_strlen_env(s2);
 	str = (char *)malloc((sl1 + sl2 + 1) * sizeof(char));
 	if (!str)
-		return (NULL);
+		ft_exit(1);
 	while (i < sl1)
 	{
 		str[i] = s1[i];

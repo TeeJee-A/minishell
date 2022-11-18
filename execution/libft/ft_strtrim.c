@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 21:54:40 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/15 22:49:02 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/18 11:00:28 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,7 @@ char	*my_strtrim(char const *s1, char const *set)
 		sl--;
 	if (sl - i < 0)
 		return (my_strdup(""));
-	str = (char *)malloc(sl - i + 2 * sizeof(char));
-	if (!str)
-		return (NULL);
+	str = ft_malloc(sl - i + 2 * sizeof(char));
 	while (i <= sl)
 		str[j++] = s1[i++];
 	str[j] = '\0';

@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 14:20:32 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/17 17:13:24 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/18 10:46:37 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,9 @@ char	**add_variable_env_one(char **line, t_env *dt, char **tab, int i)
 	}
 	else
 	{
-		tab = (char **)malloc(2 * sizeof(char *));
+		tab = malloc(2 * sizeof(char *));
+		if (!tab)
+			ft_exit(1);
 		tab[0] = line[i];
 		tab[1] = NULL;
 	}

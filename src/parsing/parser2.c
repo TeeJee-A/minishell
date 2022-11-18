@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 08:11:22 by kfaouzi           #+#    #+#             */
-/*   Updated: 2022/11/10 19:07:41 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/18 11:03:58 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_tok	*lstnew(char *content, t_enum type)
 
 	if (!content)
 		return (NULL);
-	element = (t_tok *)malloc(sizeof(t_tok));
+	element = ft_malloc(sizeof(t_tok));
 	element->value = content;
 	element->type = type;
 	element->next = NULL;

@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 19:57:32 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/16 08:37:36 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/18 11:00:10 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ char	*my_strmapi(char const *s, char (*f)(unsigned int, char))
 	if (!s)
 		return (NULL);
 	i = my_strlen(s);
-	str = (char *)malloc(i + 1);
-	if (!str)
-		return (NULL);
+	str = ft_malloc(i + 1);
 	str[i--] = '\0';
 	while (i >= 0)
 	{

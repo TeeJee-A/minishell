@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kfaouzi <kfaouzi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 15:15:29 by kfaouzi           #+#    #+#             */
-/*   Updated: 2022/10/06 06:27:02 by kfaouzi          ###   ########.fr       */
+/*   Updated: 2022/11/18 12:16:55 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,9 @@ char	*ft_strdup_trim(char *s1, char *set)
 	int		i;
 	int		j;
 	int		k;
-
-	trim = malloc(ft_strlen_trim(s1, set) + 1);
+	printf("1111111111\n");
+	trim = ft_malloc(ft_strlen_trim(s1, set) + 1);
+	printf("2222222222\n");
 	k = 0;
 	i = 0;
 	j = ft_strlen(s1) - 1;

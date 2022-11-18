@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 19:38:11 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/17 17:29:59 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/18 10:51:53 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ t_env	*init_explst(void)
 	t_env	*e;
 
 	e = malloc(sizeof(t_env));
+	if (!e)
+		ft_exit(1);
 	e->var = NULL;
 	e->val = NULL;
 	e->sz_var = 0;
