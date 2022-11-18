@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 07:08:40 by kfaouzi           #+#    #+#             */
-/*   Updated: 2022/11/18 19:28:38 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/18 21:28:43 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,16 +68,6 @@ void	run_minishell(void)
 	signal(SIGQUIT, SIG_IGN);
 	rl_catch_signals = 0;
 	desplay_shell(NULL, NULL, NULL);
-}
-
-int	my_strlendm(char **str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
 }
 
 int	main(int ac, char **av, char **env)

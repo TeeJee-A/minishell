@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_char_str.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayoubtaji <ayoubtaji@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 14:33:48 by kfaouzi           #+#    #+#             */
-/*   Updated: 2022/10/14 20:59:39 by ayoubtaji        ###   ########.fr       */
+/*   Updated: 2022/11/18 21:23:21 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@
 # include "execution.h"
 # include "libftpars.h"
 # include "minishell.h"
-# include "../execution/libft/libft.h"
 
 # define CHR_SPC ' '
 # define CHR_OUTR '>'

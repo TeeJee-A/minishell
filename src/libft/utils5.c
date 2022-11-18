@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 16:55:58 by kfaouzi           #+#    #+#             */
-/*   Updated: 2022/11/18 11:03:04 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/18 21:18:30 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,30 @@ char	*ft_strdup(char *s1)
 	}	
 	new[i] = '\0';
 	return (new);
+}
+
+char	*my_strjoin(char const *s1, char const *s2)
+{
+	size_t	i;
+	size_t	j;
+	size_t	sl1;
+	size_t	sl2;
+	char	*str;
+
+	i = 0;
+	j = 0;
+	if (!s1 || !s2)
+		return (NULL);
+	sl1 = my_strlen (s1);
+	sl2 = my_strlen (s2);
+	str = ft_malloc((sl1 + sl2 + 1) * sizeof(char));
+	while (i < sl1)
+	{
+		str[i] = s1[i];
+		i++;
+	}
+	while (j < sl2)
+		str[i++] = s2[j++];
+	str[i] = '\0';
+	return (str);
 }

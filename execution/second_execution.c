@@ -6,13 +6,11 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 10:49:44 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/17 10:51:33 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/18 21:25:32 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/utils_char_str.h"
-#include "../includes/minishell.h"
-#include "libft/libft.h"
 
 char	*change_app_to_low(char *cmd)
 {

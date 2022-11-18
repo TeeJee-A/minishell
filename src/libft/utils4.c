@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 22:54:39 by kfaouzi           #+#    #+#             */
-/*   Updated: 2022/11/18 11:02:55 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/18 21:18:00 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,70 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 	}
 	new[i] = '\0';
 	return (new);
+}
+
+int	my_strcmp(const char *s1, const char *s2)
+{
+	size_t	i;
+
+	i = 0;
+	if (!s1 || !s2)
+		return (1);
+	while (s1[i] || s2[i])
+	{
+		if (s1[i] != s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		i++;
+	}
+	return (0);
+}
+
+char	*my_strdup1(const char *s1)
+{
+	char	*str;
+	int		i;
+
+	i = 0;
+	if (!s1)
+		return (NULL);
+	str = malloc(my_strlen(s1) + 1 * sizeof(char));
+	while (s1[i] != '\0')
+	{
+		str[i] = s1[i];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
+}
+
+char	*my_strdup(const char *s1)
+{
+	char	*str;
+	int		i;
+
+	i = 0;
+	if (!s1)
+		return (NULL);
+	str = ft_malloc(my_strlen(s1) + 1 * sizeof(char));
+	while (s1[i] != '\0')
+	{
+		str[i] = s1[i];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
+}
+
+size_t	my_strlen(const char *str)
+{
+	size_t	i;
+
+	i = 0;
+	if (!str)
+		return (0);
+	while (str[i] != '\0')
+	{
+		i++;
+	}
+	return (i);
 }

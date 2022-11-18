@@ -1,11 +1,10 @@
 NAME = minishell
-LIBFT = execution/libft/libft.a
 INC = includes/libft.h includes/parsing.h \
 	includes/utils_char_str.h includes/execution.h \
 	includes/minishell.h
 
 SRCS_LIBFT = src/libft/utils1.c src/libft/utils2.c src/libft/utils3.c \
-	src/libft/utils4.c src/libft/utils5.c src/libft/utils6.c src/libft/ft_split.c
+	src/libft/utils4.c src/libft/utils5.c src/libft/utils6.c src/libft/utils7.c src/libft/ft_split.c
 
 SRC_PRS = src/parsing/tokenizer.c src/parsing/parser1.c src/parsing/parser2.c \
 	src/parsing/exec_list_utils1.c src/parsing/exec_list_utils2.c src/parsing/expander1.c \
@@ -56,7 +55,7 @@ SRC_ENV = src/environment/get_env.c
 
 SRC_SIG = src/signals/signals1.c
 
-SRCS = $(SRCS_LIBFT) $(SRC_PRS) $(SRC_EXEC) $(SRC_ENV) $(SRC_SIG) $(SRC_MINI)\
+SRCS = $(LIBFT) $(SRCS_LIBFT) $(SRC_PRS) $(SRC_EXEC) $(SRC_ENV) $(SRC_SIG) $(SRC_MINI)\
 src/main.c
 
 CFLAGS = -Wall -Werror -Wextra -I/goinfre/ataji/.brew/opt/readline/include
@@ -66,22 +65,17 @@ OBJS = $(SRCS:.c=.o)
 
 all:$(NAME)
 
-$(NAME): $(OBJS) $(LIBFT)
-	$(CC) $(CFLAGS) $(LIBFT) -lreadline -L/goinfre/ataji/.brew/opt/readline/lib -o $(NAME) $^
-
-$(LIBFT):
-	make -C execution/libft
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) -lreadline -L/goinfre/ataji/.brew/opt/readline/lib -o $(NAME) $^
 
 %.o: %.c $(INC)
 	$(CC) $(CFLAGS) -c $< -o $@ 
 
 clean:
 	@$(RM) $(OBJS)
-	@make clean -C execution/libft
 
 fclean : clean
 	@$(RM) $(NAME)
-	@make fclean -C execution/libft
 
 re : fclean all
 

@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 19:17:59 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/18 19:26:46 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/18 21:25:15 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # include"readline/readline.h"
 # include<errno.h>
 # include<string.h>
-# include"../execution/libft/libft.h"
 # include"parsing.h"
 # include<fcntl.h>
 # include<stdbool.h>
@@ -255,7 +254,7 @@ void		print_error(char *s1, char *s2, int error);
 int			check_access_file(t_execlst *el);
 
 /*********************************************************/
-/************************ errors *************************/
+/************************ garbege ************************/
 /*********************************************************/
 
 void		add_to_garbege(t_gc **data, t_gc *new);
@@ -274,4 +273,19 @@ void		ft_exit(int ex);
 int			check_redir(t_execlst *el);
 void		mini_token_and_exec(t_execlst *el);
 void		msg_error(char *str);
+
+/*********************************************************/
+/************************ garbege ************************/
+/*********************************************************/
+
+size_t		my_strlen(const char *s);
+char		*my_strdup(const char *s1);
+char		*my_substr(char const *s, unsigned int start, size_t len);
+char		*my_strjoin(char const *s1, char const *s2);
+char		**my_split(char const *s, char c);
+int			count_words(const char *str, char c);
+int			my_strcmp(const char *s1, const char *s2);
+int			my_strlendm(char **tab);
+char		*my_strdup1(const char *s1);
+
 #endif

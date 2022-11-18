@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils6.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kfaouzi <kfaouzi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 17:03:53 by kfaouzi           #+#    #+#             */
-/*   Updated: 2022/10/06 06:19:26 by kfaouzi          ###   ########.fr       */
+/*   Updated: 2022/11/18 21:29:22 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,38 @@ int	ft_atoi(const char *str)
 int	ft_isalnum(int c)
 {
 	return (ft_isalpha(c) || ft_isdigit(c));
+}
+
+char	*my_substr(char const *s, unsigned int start, size_t len)
+{
+	size_t	i;
+	char	*str;
+
+	i = 0;
+	if (!s)
+		return (NULL);
+	if (start < my_strlen(s))
+	{
+		if (my_strlen(s) < len)
+			len = my_strlen(s);
+		str = ft_malloc((len + 1) * sizeof(char));
+		while (i < len)
+			str[i++] = s[start++];
+	}
+	else
+		str = ft_malloc(1);
+	str[i] = '\0';
+	return (str);
+}
+
+int	my_strlendm(char **tab)
+{
+	int	i;
+
+	i = 0;
+	if (!tab)
+		return (0);
+	while (tab[i])
+		i++;
+	return (i);
 }
