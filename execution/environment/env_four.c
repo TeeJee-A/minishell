@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../includes/utils_char_str.h"
 #include "../../includes/minishell.h"
 
 void	add_variable_env(char **line, t_env *dt)

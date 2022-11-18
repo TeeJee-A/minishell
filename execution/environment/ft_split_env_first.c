@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../includes/utils_char_str.h"
 #include "../../includes/minishell.h"
 
 char	**ft_freeing_env_first(char **tab)

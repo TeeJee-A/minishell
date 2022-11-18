@@ -10,10 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdlib.h>
-#include <stdio.h>
-#include <unistd.h>
+#include "../../includes/utils_char_str.h"
 
 size_t	my_strlcat(char *dst, const char *src, size_t dstsize)
 {

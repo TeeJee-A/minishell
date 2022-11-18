@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../includes/utils_char_str.h"
 
 static int	my_search(const char *s, char c)
 {

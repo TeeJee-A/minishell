@@ -22,12 +22,16 @@
 # include <stdbool.h>
 # include <signal.h>
 # include <paths.h>
+# include<errno.h>
+# include<dirent.h>
 # include "readline/readline.h"
 # include "readline/history.h"
 # include "parsing.h"
 # include "execution.h"
 # include "libftpars.h"
 # include "minishell.h"
+# include "../execution/libft/libft.h"
+
 # define CHR_SPC ' '
 # define CHR_OUTR '>'
 # define CHR_INR '<'

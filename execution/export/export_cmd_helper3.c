@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../includes/utils_char_str.h"
 #include "../../includes/minishell.h"
 
 int	find_it_exp(char **tab)

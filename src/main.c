@@ -38,8 +38,8 @@ void	desplay_shell(char *line, t_tok *tokens, t_execlst *el)
 {
 	(void)tokens;
 	(void)el;
-	while (1)
-	{
+	// while (1)
+	// {
 		line = readline(STR_PROMPT);
 		if (!line)
 		{
@@ -52,7 +52,7 @@ void	desplay_shell(char *line, t_tok *tokens, t_execlst *el)
 			token_and_exec(line, NULL, NULL);
 		}
 		ft_free_inside();
-	}
+	// }
 	ft_free_env_exp();
 }
 
@@ -100,7 +100,6 @@ int	main(int ac, char **av, char **env)
 		get_exp(dt1);
 	}
 	run_minishell();
-	while (1)
-		;
+	system("leaks minishell");
 	return (0);
 }

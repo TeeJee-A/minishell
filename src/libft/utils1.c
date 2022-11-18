@@ -67,9 +67,8 @@ char	*ft_strdup_trim(char *s1, char *set)
 	int		i;
 	int		j;
 	int		k;
-	printf("1111111111\n");
+
 	trim = ft_malloc(ft_strlen_trim(s1, set) + 1);
-	printf("2222222222\n");
 	k = 0;
 	i = 0;
 	j = ft_strlen(s1) - 1;

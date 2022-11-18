@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../includes/utils_char_str.h"
 
 void	my_bzero(void *s, size_t n)
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "../../includes/utils_char_str.h"
 
 size_t	my_strlcpy(char *dest, const char *src, size_t dstsize)
 {

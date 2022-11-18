@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../includes/utils_char_str.h"
 #include "../../includes/minishell.h"
 
 bool	find_equal_export(char *str)

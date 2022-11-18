@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../includes/utils_char_str.h"
 #include "../includes/minishell.h"
-#include "../includes/parsing.h"
 
 void	add_to_garbege(t_gc **data, t_gc *new)
 {
@@ -74,6 +74,7 @@ void	ft_free_env_exp(void)
 		free(g_data.g_explst);
 		g_data.g_explst = tmp;
 	}
+	
 }
 
 void	ft_exit(int ex)

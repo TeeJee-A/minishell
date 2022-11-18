@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../includes/utils_char_str.h"
 #include "../includes/minishell.h"
 
 int	check_path(char *var, char *p)

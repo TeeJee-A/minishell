@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../includes/utils_char_str.h"
 #include "../includes/minishell.h"
 
 int	pwd_cmd(t_execlst *el)

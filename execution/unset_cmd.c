@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../includes/utils_char_str.h"
 #include "../includes/minishell.h"
 
 void	mini_unset_env(t_env *tmp, t_env *tmp2)

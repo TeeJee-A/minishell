@@ -10,9 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fcntl.h>
-#include <unistd.h>
-#include "libft.h"
+#include "../../includes/utils_char_str.h"
 
 void	my_putnbr_fd(int n, int fd)
 {

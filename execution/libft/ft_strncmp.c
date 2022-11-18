@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../includes/utils_char_str.h"
 
 int	my_strncmp(const char *s1, const char *s2, size_t n)
 {

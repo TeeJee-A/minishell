@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../includes/utils_char_str.h"
 
 char	*my_strnstr(const char *haystack, const char *needle, size_t len)
 {

@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../includes/utils_char_str.h"
 #include "../includes/minishell.h"
-#include "../includes/parsing.h"
 
 int	check_access_file(t_execlst *el)
 {

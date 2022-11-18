@@ -10,7 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../includes/utils_char_str.h"
 #include "../includes/minishell.h"
+#include "libft/libft.h"
 
 char	*change_app_to_low(char *cmd)
 {

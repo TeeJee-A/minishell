@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ctype.h>
-#include "libft.h"
+#include "../../includes/utils_char_str.h"
 
 int	my_tolower(int c)
 {

@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../includes/utils_char_str.h"
+
 void	my_striteri(char *s, void (*f)(unsigned int, char*))
 {
 	int	i;

@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#ifndef LIBFTPARS_H
+# define LIBFTPARS_H
 
 # include"parsing.h"
 

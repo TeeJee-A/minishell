@@ -10,14 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #ifndef LIBFT_H
 # define LIBFT_H
 
 # include<stdlib.h>
 # include<unistd.h>
 # include<stdio.h>
-#include "../../includes/parsing.h"
-#include "../../includes/minishell.h"
+# include"../../includes/parsing.h"
+# include"../../includes/minishell.h"
+# include"../../includes/utils_char_str.h"
 
 int		my_atoi(const char *str);
 void	my_bzero(void *s, size_t n);
@@ -56,4 +58,6 @@ void	my_putnbr_fd(int n, int fd);
 int		count_words(const char *str, char c);
 int		my_strcmp(const char *s1, const char *s2);
 int		my_strlendm(char **tab);
+char	*my_strdup1(const char *s1);
+
 #endif

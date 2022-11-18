@@ -65,7 +65,7 @@ typedef struct s_gc
 {
 	void		*_free;
 	struct s_gc	*next;
-}   t_gc;
+}	t_gc;
 
 typedef struct s_data
 {

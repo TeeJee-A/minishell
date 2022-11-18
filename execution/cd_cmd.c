@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../includes/utils_char_str.h"
 #include "../includes/minishell.h"
 
 void	change_old_pwd(t_env *dt)
@@ -26,7 +27,7 @@ void	change_old_pwd(t_env *dt)
 		{
 			if (tmp->sz_val)
 			{
-				tmp->val = my_strdup(old_pwd);
+				tmp->val = my_strdup1(old_pwd);
 				tmp->sz_val = my_strlen(old_pwd);
 			}
 		}
@@ -46,7 +47,7 @@ void	change_pwd(t_env *dt)
 	{
 		if (!my_strcmp(tmp->var, "PWD"))
 		{
-			tmp->val = my_strdup(new_pwd);
+			tmp->val = my_strdup1(new_pwd);
 			tmp->sz_val = my_strlen(new_pwd);
 		}
 		tmp = tmp->next;
