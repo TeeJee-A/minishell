@@ -24,6 +24,7 @@ SRC_MINI = execution/first_execution.c\
 	execution/cmd.c\
 	execution/print_error.c\
 	execution/garbege.c\
+	execution/garbege_helper.c\
 	execution/environment/get_env.c\
 	execution/environment/ft_split_one.c\
 	execution/environment/env_cmd.c\

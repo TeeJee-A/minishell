@@ -87,7 +87,7 @@ char	*ft_strdup_exp(const char *s1)
 	int		i;
 
 	i = 0;
-	str = (char *)malloc(ft_strlen_exp(s1) + 1 * sizeof(char));
+	str = (char *)ft_malloc2(ft_strlen_exp(s1) + 1 * sizeof(char));
 	if (!str)
 		ft_exit(1);
 	while (s1[i] != '\0')
@@ -113,7 +113,7 @@ char	*ft_strjoin_exp(char const *s1, char const *s2)
 		return (NULL);
 	sl1 = ft_strlen_exp (s1);
 	sl2 = ft_strlen_exp (s2);
-	str = (char *)malloc((sl1 + sl2 + 1) * sizeof(char));
+	str = (char *)ft_malloc2((sl1 + sl2 + 1) * sizeof(char));
 	if (!str)
 		ft_exit(1);
 	while (i < sl1)

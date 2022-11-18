@@ -2,6 +2,7 @@
     "files.associations": {
         "unistd.h": "c",
         "stdlib.h": "c",
-        "utils_char_str.h": "c"
+        "utils_char_str.h": "c",
+        "minishell.h": "c"
     }
 }

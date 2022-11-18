@@ -67,21 +67,25 @@ typedef struct s_gc
 	struct s_gc	*next;
 }	t_gc;
 
+typedef struct s_exp_env
+{
+	void				*_free;
+	struct s_exp_env	*next;
+}	t_exp_env;
+
 typedef struct s_data
 {
 	t_env			*g_envlst;
 	t_env			*g_explst;
 	t_gc			*garbege;
+	t_exp_env		*garbege_exp_env;
 	int				is_running;
 	int				exit_status;
 	char			**g_env;
 	char			**g_exp;
-	char			*path1;
-	char			*path2;
 	int				id_cat;
 	int				exec;
 	struct s_data	*next;
-	char			*pwd;
 	int				first;
 	int				lenenvlst;
 	int				lenexplst;
@@ -141,7 +145,7 @@ void			put_in_fd(char *del, int fd, int nbdel);
 void			stay_in_shell(int _signal);
 void			add_garbage_in(void *data);
 void			signals(void);
-
+void			*ft_malloc2(size_t size);
 // void			add_to_garbege(t_gc **data, t_gc *new);
 // t_gc			*ft_new_gc(void *data);
 // void			*ft_malloc(size_t size);

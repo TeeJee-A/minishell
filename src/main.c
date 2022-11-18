@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 07:08:40 by kfaouzi           #+#    #+#             */
-/*   Updated: 2022/11/18 12:19:51 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/18 19:28:38 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,23 +36,29 @@ void	token_and_exec(char *line, t_tok *tokens, t_execlst *el)
 
 void	desplay_shell(char *line, t_tok *tokens, t_execlst *el)
 {
+	t_gc	*tmp;
+	int		i;
+
 	(void)tokens;
 	(void)el;
-	// while (1)
-	// {
+	while (1)
+	{
 		line = readline(STR_PROMPT);
 		if (!line)
-		{
-			write(1, " exit\n", 6);
-			exit(0);
-		}
+			msg_error("exit\n");
 		if (line[0])
 		{
 			add_history(line);
 			token_and_exec(line, NULL, NULL);
 		}
+		i = 0;
+		tmp = g_data.garbege;
+		while (g_data.garbege && ++i)
+			g_data.garbege = g_data.garbege->next;
+		g_data.garbege = tmp;
+		free(line);
 		ft_free_inside();
-	// }
+	}
 	ft_free_env_exp();
 }
 
@@ -100,6 +106,5 @@ int	main(int ac, char **av, char **env)
 		get_exp(dt1);
 	}
 	run_minishell();
-	system("leaks minishell");
 	return (0);
 }

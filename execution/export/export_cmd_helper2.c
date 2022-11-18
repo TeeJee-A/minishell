@@ -56,7 +56,7 @@ char	**add_var_helper2(char **line, t_env *dt, char **tab, int i)
 	}
 	else
 	{
-		tab = malloc(2 * sizeof(char *));
+		tab = ft_malloc2(2 * sizeof(char *));
 		if (!tab)
 			ft_exit(1);
 		tab[0] = line[i];

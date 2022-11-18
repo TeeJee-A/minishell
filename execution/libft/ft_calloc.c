@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "../../includes/utils_char_str.h"
-# include"../../includes/minishell.h"
-#include "libft.h"
 
 void	*my_calloc(size_t count, size_t size)
 {

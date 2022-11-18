@@ -6,29 +6,11 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 10:25:09 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/18 12:19:12 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/18 19:21:02 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/utils_char_str.h"
-#include "../includes/minishell.h"
-
-void	add_to_garbege(t_gc **data, t_gc *new)
-{
-	new->next = *data;
-	*data = new;
-	new = NULL;
-}
-
-t_gc	*ft_new_gc(void *data)
-{
-	t_gc	*new;
-
-	new = malloc(sizeof(t_gc));
-	new->_free = data;
-	new->next = NULL;
-	return (new);
-}
 
 void	*ft_malloc(size_t size)
 {
@@ -38,6 +20,17 @@ void	*ft_malloc(size_t size)
 	if (!data)
 		ft_exit(1);
 	add_to_garbege(&g_data.garbege, ft_new_gc(data));
+	return (data);
+}
+
+void	*ft_malloc2(size_t size)
+{
+	void	*data;
+
+	data = malloc(size);
+	if (!data)
+		ft_exit(1);
+	add_to_garbege2(&g_data.garbege_exp_env, ft_new_gc2(data));
 	return (data);
 }
 
@@ -56,25 +49,15 @@ void	ft_free_inside(void)
 
 void	ft_free_env_exp(void)
 {
-	t_env	*tmp;
+	t_exp_env	*tmp;
 
-	while (g_data.g_envlst)
+	while (g_data.garbege_exp_env)
 	{
-		tmp = g_data.g_envlst->next;
-		free(g_data.g_envlst->var);
-		free(g_data.g_envlst->val);
-		free(g_data.g_envlst);
-		g_data.g_envlst = tmp;
+		tmp = g_data.garbege_exp_env->next;
+		free(g_data.garbege_exp_env->_free);
+		free(g_data.garbege_exp_env);
+		g_data.garbege_exp_env = tmp;
 	}
-	while (g_data.g_explst)
-	{
-		tmp = g_data.g_explst->next;
-		free(g_data.g_explst->var);
-		free(g_data.g_explst->val);
-		free(g_data.g_explst);
-		g_data.g_explst = tmp;
-	}
-	
 }
 
 void	ft_exit(int ex)

@@ -25,7 +25,7 @@ char	*ft_substr_env(char const *s, unsigned int start, size_t len)
 	{
 		if (ft_strlen_env(s) < len)
 			len = ft_strlen_env(s);
-		str = (char *)malloc((len + 1) * sizeof(char));
+		str = (char *)ft_malloc2((len + 1) * sizeof(char));
 		if (!str)
 			ft_exit(1);
 		while (i < len)
@@ -33,7 +33,7 @@ char	*ft_substr_env(char const *s, unsigned int start, size_t len)
 	}
 	else
 	{
-		str = malloc(1);
+		str = ft_malloc2(1);
 		if (!str)
 			ft_exit(1);
 	}
@@ -56,7 +56,7 @@ char	*ft_strdup_env(const char *s1)
 	int		i;
 
 	i = 0;
-	str = (char *)malloc(ft_strlen_env(s1) + 1 * sizeof(char));
+	str = (char *)ft_malloc2(ft_strlen_env(s1) + 1 * sizeof(char));
 	if (!str)
 		ft_exit(1);
 	while (s1[i] != '\0')

@@ -29,7 +29,7 @@ char	*get_var_name_exp_first(const char *s, int index)
 	char	*var_name;
 	int		i;
 
-	var_name = malloc(index + 1);
+	var_name = ft_malloc2(index + 1);
 	if (!var_name)
 		ft_exit(1);
 	i = 0;
@@ -47,7 +47,7 @@ char	*get_var_value_exp_first(const char *s, int index)
 	char	*var_value;
 	int		j;
 
-	var_value = malloc(ft_strlen_exp(s) - index + 1);
+	var_value = ft_malloc2(ft_strlen_exp(s) - index + 1);
 	if (!var_value)
 		ft_exit(1);
 	j = 0;
@@ -66,7 +66,7 @@ char	**set_words_exp_first(char const *s, char c)
 	char	**tab;
 	int		i;
 
-	tab = malloc(3 * sizeof(char *));
+	tab = ft_malloc2(3 * sizeof(char *));
 	if (!tab)
 		ft_exit(1);
 	i = 0;

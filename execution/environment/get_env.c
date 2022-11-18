@@ -17,7 +17,7 @@ t_env	*init_envlst(void)
 {
 	t_env	*e;
 
-	e = malloc(sizeof(t_env));
+	e = ft_malloc2(sizeof(t_env));
 	if (!e)
 		ft_exit(1);
 	e->var = NULL;

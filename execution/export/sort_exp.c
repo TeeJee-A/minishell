@@ -25,7 +25,7 @@ char	*ft_substr_exp(char const *s, unsigned int start, size_t len)
 	{
 		if (ft_strlen_exp(s) < len)
 			len = ft_strlen_exp(s);
-		str = (char *)malloc((len + 1) * sizeof(char));
+		str = (char *)ft_malloc2((len + 1) * sizeof(char));
 		if (!str)
 			ft_exit(1);
 		while (i < len)
@@ -33,7 +33,7 @@ char	*ft_substr_exp(char const *s, unsigned int start, size_t len)
 	}
 	else
 	{
-		str = malloc(1);
+		str = ft_malloc2(1);
 		if (!str)
 			ft_exit(1);
 	}

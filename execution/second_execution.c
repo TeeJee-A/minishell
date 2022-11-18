@@ -61,7 +61,7 @@ int	check_if_builtin(t_execlst *el)
 		return (0);
 	if (!el)
 		return (0);
-	el->cmd[0] = change_app_to_low(*el->cmd);
+	el->cmd[0] = change_app_to_low(el->cmd[0]);
 	cmd = "echo exit pwd cd env export unset";
 	tab = my_split(cmd, ' ');
 	while (tab[i])
