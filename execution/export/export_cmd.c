@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export_cmd.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
+/*   By: kfaouzi <kfaouzi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 01:12:48 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/17 23:01:29 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/22 13:57:05 by kfaouzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,11 @@ bool	find_equal_export(char *str)
 int	check_plus_exist_exp(t_env *dt, char *str1)
 {
 	t_env	*tmp;
-	char	*var;
 
 	tmp = dt;
-	var = ft_substr_exp(str1, 0, (ft_strlen_exp(str1) - 1));
 	while (tmp)
 	{
-		if (!ft_strcmp_exp(tmp->var, var))
+		if (tmp->var && !ft_strcmp_exp(tmp->var, str1))
 			return (1);
 		tmp = tmp->next;
 	}
@@ -81,31 +79,22 @@ void	print_export(t_env *dt, int t)
 	}
 }
 
-int	export_cmd(char **line, t_execlst *el)
+int	add_var_exp_env(char **line)
 {
-	t_env	*tmp;
-	int		t;
-	t_env	*dt_exp;
-	t_env	*dt_env;
+	int	check;
+	int	i;
 
-	t = 0;
-	dt_exp = g_data.g_explst;
-	dt_env = g_data.g_envlst;
-	if (my_strlendm(line) > 1)
+	check = 0;
+	i = 0;
+	while (line[++i])
 	{
-		t = 1;
-		if (handle_special_char_exp(line) == 1)
-			return (1);
-		add_variable_exp(line, dt_exp);
-		add_variable_env(line, dt_env);
+		if (handle_special_char_exp(line[i]) == 1)
+		{
+			continue ;
+			check = 1;
+		}
+		add_variable_exp(line[i], &g_data.g_explst);
+		add_variable_env(line[i], &g_data.g_envlst);
 	}
-	sort_exp(dt_exp);
-	tmp = g_data.g_explst;
-	if (el->red && el->red->fd && my_strlendm(line) == 1)
-	{
-		red_export(el, tmp);
-		return (1);
-	}
-	print_export(tmp, t);
-	return (1);
+	return (check);
 }

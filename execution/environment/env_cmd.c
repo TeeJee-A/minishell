@@ -6,14 +6,14 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 21:20:45 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/17 15:08:12 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/21 20:43:30 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/utils_char_str.h"
 #include "../../includes/minishell.h"
 
-void	add_variable_env_two(t_env *dt, char **tab, char **line)
+void	add_variable_env_two(t_env *dt, char **tab, char *line)
 {
 	t_env	*tmp;
 

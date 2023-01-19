@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
+/*   By: kfaouzi <kfaouzi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 07:38:32 by kfaouzi           #+#    #+#             */
-/*   Updated: 2022/11/18 11:58:19 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/22 11:46:17 by kfaouzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ typedef struct s_data
 	int				lenenvlst;
 	int				lenexplst;
 	int				check_error;
+	char			*fix_pwd;
 }t_data;
 
 t_data	g_data;
@@ -125,6 +126,7 @@ int				help_pipe(t_tok **token);
 //prepare list for execution
 
 int				add_tknex(t_execlst **token, t_execlst **new);
+char			*new_strjoin(char *s1, char *s2);
 t_execlst		*get_execlst(t_tok *tkns);
 t_execlst		*getred(t_execlst *e, t_tok *tok);
 t_red			*getredlst(t_red *red, t_tok *tok);

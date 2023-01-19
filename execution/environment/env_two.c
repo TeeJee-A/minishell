@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_two.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
+/*   By: kfaouzi <kfaouzi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 14:19:10 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/17 16:17:48 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/22 14:20:47 by kfaouzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	check_plus_exist_env(t_env *dt, char *str1)
 	var = ft_substr_env(str1, 0, (ft_strlen_env(str1) - 1));
 	while (tmp)
 	{
-		if (!ft_strcmp_env(tmp->var, var))
+		if (tmp->var && !ft_strcmp_env(tmp->var, var))
 			return (1);
 		tmp = tmp->next;
 	}

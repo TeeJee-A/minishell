@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_commands.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
+/*   By: kfaouzi <kfaouzi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 11:58:48 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/17 23:01:03 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/22 13:17:17 by kfaouzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ int	mini_echo(t_execlst *el)
 	int	ck;
 
 	ck = 0;
-	if (el->cmd[1] == NULL && !el->red)
+	if (el->cmd && !el->cmd[1] && !el->red)
 	{
 		write (1, "\n", 1);
 		ck = 1;
 	}
 	else
-		ck = echo_cmd(el);
+		ck = echo_cmd(el, 0, 0, -1);
 	return (ck);
 }
 
@@ -75,7 +75,7 @@ int	builtin_commands(t_execlst *el)
 		if (!(my_strcmp(el->cmd[0], "echo")))
 			ck = mini_echo(el);
 		else if (!(my_strcmp(el->cmd[0], "exit")))
-			exit_cmd();
+			ck = exit_cmd(el);
 		else if (!(my_strcmp(el->cmd[0], "pwd")))
 			ck = pwd_cmd(el);
 		else if (!(my_strcmp(el->cmd[0], "cd")))

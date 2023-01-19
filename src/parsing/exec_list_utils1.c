@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_list_utils1.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
+/*   By: kfaouzi <kfaouzi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:04:31 by kfaouzi           #+#    #+#             */
-/*   Updated: 2022/11/18 11:03:22 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/20 10:30:17 by kfaouzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,23 +25,20 @@ t_execlst	*init_execlst(void)
 
 t_execlst	*getcmd(t_execlst *e, char *val)
 {
-	int		i;
+	size_t	i;
 	char	**new;
 
 	if (!e)
 		e = init_execlst();
-	if (!e)
-		return (NULL);
 	i = 0;
 	while (e->cmd && e->cmd[i])
 		i++;
 	new = ft_malloc(sizeof(char *) * (i + 2));
-	new[i + 1] = NULL;
 	new[i] = val;
-	if (!new[i])
-		return (NULL);
-	while (--i >= 0 && e->cmd[i])
+	new[i + 1] = NULL;
+	while ((int)--i >= 0 && e->cmd && e->cmd[i])
 		new[i] = e->cmd[i];
+	i = 0;
 	return (e->cmd = new, e);
 }
 

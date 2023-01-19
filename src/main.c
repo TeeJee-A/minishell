@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
+/*   By: kfaouzi <kfaouzi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 07:08:40 by kfaouzi           #+#    #+#             */
-/*   Updated: 2022/11/18 21:28:43 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/22 12:46:36 by kfaouzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	token_and_exec(char *line, t_tok *tokens, t_execlst *el)
 {
 	char		*t;
-	t_execlst	*el1;
 
 	t = line;
 	line = ft_strtrim(line, STR_SPC);
@@ -27,18 +26,16 @@ void	token_and_exec(char *line, t_tok *tokens, t_execlst *el)
 		{
 			g_data.exec = 1;
 			el = expand_list(el);
-			el1 = el;
+			g_data.is_running = 1;
 			if (g_data.exec == 1)
-				mini_token_and_exec(el1);
+				mini_token_and_exec(el);
+			g_data.is_running = 0;
 		}
 	}
 }
 
 void	desplay_shell(char *line, t_tok *tokens, t_execlst *el)
 {
-	t_gc	*tmp;
-	int		i;
-
 	(void)tokens;
 	(void)el;
 	while (1)
@@ -51,11 +48,6 @@ void	desplay_shell(char *line, t_tok *tokens, t_execlst *el)
 			add_history(line);
 			token_and_exec(line, NULL, NULL);
 		}
-		i = 0;
-		tmp = g_data.garbege;
-		while (g_data.garbege && ++i)
-			g_data.garbege = g_data.garbege->next;
-		g_data.garbege = tmp;
 		free(line);
 		ft_free_inside();
 	}

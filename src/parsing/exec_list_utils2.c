@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 08:00:51 by kfaouzi           #+#    #+#             */
-/*   Updated: 2022/11/10 19:05:12 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/21 18:02:16 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,38 +38,6 @@ t_execlst	*get_execlst(t_tok *tkns)
 		tmp = tmp->next;
 	}
 	return (exec);
-}
-
-void	free_red(t_red **red)
-{
-	t_red	*tmp;
-
-	if (red)
-	{
-		while (*red)
-		{
-			tmp = (*red)->next;
-			free(*red);
-			*red = tmp;
-		}
-	}	
-}
-
-void	clear_execlst(t_execlst **lst)
-{
-	t_execlst	*tmp;
-
-	if (lst)
-	{
-		while (*lst)
-		{
-			tmp = (*lst)->next;
-			free((*lst)->cmd);
-			free_red(&(*lst)->red);
-			free(*lst);
-			*lst = tmp;
-		}
-	}
 }
 
 int	add_tknex(t_execlst **token, t_execlst **new)

@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 10:43:06 by kfaouzi           #+#    #+#             */
-/*   Updated: 2022/11/18 11:03:37 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/21 18:01:50 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,8 +104,8 @@ char	*_expander(char *line, int dq)
 			i += add_words(&line[i], &expand_str);
 		else if (line[i] == '\"')
 		{
-			if (!expand_str)
-				expand_str = NULL;
+			if ((i != 0 && line[i - 1] == '\"') && dq == 1)
+				expand_str = new_strjoin(expand_str, "");
 			if (dq == 1)
 				dq = 0;
 			else

@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 10:52:00 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/17 10:52:43 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/22 00:06:26 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,20 @@ char	*relative_path(char *line)
 	return (line);
 }
 
+char	*getenv_from_my_env(char *key)
+{
+	t_env	*dt;
+
+	dt = g_data.g_envlst;
+	while (dt)
+	{
+		if (!ft_strcmp_env(dt->var, key))
+			return (dt->val);
+		dt = dt->next;
+	}
+	return (NULL);
+}
+
 char	*creat_path(char **line, char *path)
 {
 	char	*command;
@@ -37,7 +51,7 @@ char	*creat_path(char **line, char *path)
 	int		i;
 	int		j;
 
-	old_path = getenv("PATH");
+	old_path = getenv_from_my_env("PATH");
 	tab = my_split(old_path, ':');
 	i = 0;
 	while (line[i])
@@ -54,16 +68,6 @@ char	*creat_path(char **line, char *path)
 		i++;
 	}
 	return (NULL);
-}
-
-char	*creat_execution_file(char *path)
-{
-	int		i;
-	char	*new_path;
-
-	i = 2;
-	new_path = my_substr(path, i, my_strlen(path));
-	return (new_path);
 }
 
 char	*join_path(t_execlst *el)

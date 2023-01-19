@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   export_cmd_helper.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
+/*   By: kfaouzi <kfaouzi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 18:38:05 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/17 18:39:12 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/22 11:01:09 by kfaouzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/utils_char_str.h"
 #include "../../includes/minishell.h"
 
-int	exist_or_not_exp(char **tab, char **line)
+int	exist_or_not_exp(char **tab, char *line)
 {
 	t_env	*dt;
 
@@ -41,21 +41,15 @@ int	exist_or_not_exp(char **tab, char **line)
 	return (0);
 }
 
-int	find_equal_exp(char **line)
+int	find_equal_exp(char *line)
 {
 	int	i;
-	int	j;
 
-	i = 1;
+	i = 0;
 	while (line[i])
 	{
-		j = 0;
-		while (line[i][j])
-		{
-			if (line[i][j] == '=')
-				return (1);
-			j++;
-		}
+		if (line[i] == '=')
+			return (1);
 		i++;
 	}
 	return (0);

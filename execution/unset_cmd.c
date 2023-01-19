@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset_cmd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
+/*   By: kfaouzi <kfaouzi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 00:26:25 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/16 08:36:47 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/22 14:46:36 by kfaouzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,27 @@ int	unset_env(char **line)
 	return (1);
 }
 
+int	special_unset(char *line)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (line[i])
+	{
+		j = 0;
+		while ("-$,~^=}]/:\'\"%.0123456789"[j])
+		{
+			if (line[i] == "-$,~^=}]/:%.0123456789"[j])
+				return (print_error_builtin(line, \
+"Not a valid identifier", 1), 1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
+
 int	unset_exp(char **line)
 {
 	t_env	*tmp;
@@ -86,6 +107,8 @@ int	unset_exp(char **line)
 	{
 		tmp = g_data.g_explst;
 		tmp2 = g_data.g_explst;
+		if (special_unset(line[i]))
+			return (1);
 		while (tmp)
 		{
 			if (!(my_strcmp(tmp->var, line[i])))

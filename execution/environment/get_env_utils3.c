@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 17:21:05 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/18 10:49:58 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/20 19:28:38 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	ft_strcmp_env(const char *s1, const char *s2)
 
 	i = 0;
 	if (!s1 || !s2)
-		return (0);
+		return (2);
 	while (s1[i] || s2[i])
 	{
 		if (s1[i] != s2[i])

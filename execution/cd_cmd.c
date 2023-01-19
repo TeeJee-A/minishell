@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd_cmd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
+/*   By: kfaouzi <kfaouzi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 11:29:20 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/16 19:37:43 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/22 12:48:40 by kfaouzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	change_old_pwd(t_env *dt)
 	t_env	*tmp;
 
 	old_pwd = getcwd(pwd, 1024);
+	if (!old_pwd)
+		old_pwd = my_strdup1("deleted");
 	tmp = dt;
 	while (tmp)
 	{
@@ -58,7 +60,7 @@ int	mini_cd_cmd(void)
 {
 	if (!getenv("HOME"))
 	{
-		printf("Minishell: cd: HOME not set\n");
+		print_error_builtin("cd", "HOME not set", 1);
 		return (1);
 	}
 	chdir(getenv("HOME"));
@@ -74,8 +76,7 @@ int	cd_cmd(char **line)
 	change_old_pwd(g_data.g_envlst);
 	change_old_pwd(g_data.g_explst);
 	if (!getcwd(cwd, 1024))
-		if (chdir(line[1]) == -1)
-			return (1);
+		return (chdir(line[1]), 1);
 	if (line[1] == NULL)
 	{
 		mini_cd_cmd();

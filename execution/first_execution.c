@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   first_execution.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
+/*   By: kfaouzi <kfaouzi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 10:54:02 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/17 16:05:29 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/22 10:32:00 by kfaouzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ void	execve_function(t_execlst *el)
 			return (perror("fork"));
 		if (pid == 0)
 		{
-			signal(SIGINT, SIG_DFL);
 			signal(SIGQUIT, SIG_DFL);
 			cmd(el, __pipe);
 		}

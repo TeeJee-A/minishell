@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 19:38:11 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/18 10:51:53 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/21 08:57:29 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	get_exp_empty(t_env *dt)
 	char	pwd[256];
 
 	getcwd(pwd, sizeof(pwd));
-	dt->var = ft_strdup_exp("PLDPWD");
+	dt->var = ft_strdup_exp("OLDPWD");
 	dt->sz_var = ft_strlen_exp("OLDPWD");
 	dt->next = init_explst();
 	dt = dt->next;

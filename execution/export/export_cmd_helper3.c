@@ -3,62 +3,63 @@
 /*                                                        :::      ::::::::   */
 /*   export_cmd_helper3.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
+/*   By: kfaouzi <kfaouzi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 21:45:47 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/17 21:51:43 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/22 14:31:26 by kfaouzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/utils_char_str.h"
 #include "../../includes/minishell.h"
 
-int	find_it_exp(char **tab)
+int	find_it_exp(char *line)
 {
-	int		i;
 	int		j;
-	int		count;
-	char	*special;
-	char	*line;
+	char	**special;
+	int		k;
+	int		check__;
 
-	i = 0;
-	count = 0;
-	special = "-$+,~^=}]/:\'\"%.0123456789";
-	while (tab[i])
+	k = -1;
+	check__ = 0;
+	special = ft_split_exp(line, '=');
+	if (!special[0][0])
+		check__ = 1;
+	while (special[0][++k])
 	{
-		line = ft_strdup_exp(tab[i]);
 		j = 0;
-		while (special[j])
+		while ("-$,~^=}]/:\'\"%.0123456789"[j])
 		{
-			if (line[0] == special[j])
-				count++;
+			if (special[0][k] == "-$,~^=}]/:%.0123456789"[j])
+				check__ = 1;
 			j++;
 		}
-		i++;
 	}
-	return (count);
+	return (check__);
 }
 
-int	handle_special_char_exp(char **line)
+int	handle_special_char_exp(char *line)
 {
-	int	i;
-	int	j;
-	int	count;
+	int	k;
 	int	check;
 
-	i = 0;
-	j = 1;
+	k = 0;
 	check = 0;
-	count = find_it_exp(line);
-	while (i < count)
-	{
-		printf("Minishell: `%s': Not a valid identifier\n", line[j]);
-		g_data.exit_status = 1;
-		i++;
-		j++;
-		check = 1;
-	}
+	check = find_it_exp(line);
 	if (check == 1)
+	{
+		print_error_builtin(line, "Not a valid identifier", 1);
 		return (1);
+	}
 	return (0);
+}
+
+int	add_var_helper3(char *line)
+{
+	if (ft_check_plus_exp(line) == 2)
+	{
+		print_error_builtin(line, "Not a valid identifier", 1);
+		return (0);
+	}
+	return (1);
 }

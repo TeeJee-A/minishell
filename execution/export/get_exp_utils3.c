@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 17:36:11 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/17 17:36:35 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/21 23:10:41 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_check_plus_exp(char *line)
 	i = 0;
 	while (line[i])
 	{
-		if (line[i] == '+' && line[i + 1] != '=')
+		if (line[i] == '+' && (!line[i + 1] || line[i + 1] != '='))
 			return (2);
 		if (line[i] == '+' && line[i + 1] == '=')
 			return (1);

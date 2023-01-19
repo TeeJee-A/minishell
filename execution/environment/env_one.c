@@ -6,7 +6,7 @@
 /*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 14:18:03 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/17 14:18:33 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/21 20:41:55 by ataji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,27 +29,21 @@ int	ft_check_plus_env(char *line)
 	return (0);
 }
 
-int	find_equal_env(char **line)
+int	find_equal_env(char *line)
 {
 	int	i;
-	int	j;
 
-	i = 1;
+	i = 0;
 	while (line[i])
 	{
-		j = 0;
-		while (line[i][j])
-		{
-			if (line[i][j] == '=')
-				return (1);
-			j++;
-		}
+		if (line[i] == '=')
+			return (1);
 		i++;
 	}
 	return (0);
 }
 
-int	add_val_if_not_exist(t_env *dt, char **line, char **tab)
+int	add_val_if_not_exist(t_env *dt, char *line, char **tab)
 {
 	if (tab[1])
 	{
@@ -69,7 +63,7 @@ int	add_val_if_not_exist(t_env *dt, char **line, char **tab)
 	return (2);
 }
 
-int	exist_or_not_env(char **tab, char **line)
+int	exist_or_not_env(char **tab, char *line)
 {
 	t_env	*dt;
 

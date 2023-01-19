@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
+/*   By: kfaouzi <kfaouzi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 06:01:07 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/17 09:11:56 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/22 14:19:32 by kfaouzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,11 @@ char	*add_path(t_execlst *el)
 			path = join_path(el);
 			break ;
 		}
-		else if (el->cmd[0][0] == '.' && el->cmd[0][1] == '/')
+		else if ((el->cmd && el->cmd[0]) && (el->cmd[0][0] \
+			== '.' && el->cmd[0][1] == '/'))
 			path = creat_execution_file(el->cmd[0]);
+		else if (access(el->cmd[0], F_OK) == 0)
+			path = el->cmd[0];
 		dt = dt->next;
 	}
 	return (path);
@@ -50,6 +53,8 @@ void	cmd(t_execlst *el, int __pipe[2])
 	int		fd_out;
 	int		fd_in;
 
+	fd_out = dup(1);
+	fd_in = dup(0);
 	preexec(el, __pipe);
 	if (!el->cmd || !el->cmd[0])
 		exit(1);

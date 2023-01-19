@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataji <ataji@student.42.fr>                +#+  +:+       +#+        */
+/*   By: kfaouzi <kfaouzi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 19:17:59 by ataji             #+#    #+#             */
-/*   Updated: 2022/11/18 21:25:15 by ataji            ###   ########.fr       */
+/*   Updated: 2022/11/22 13:10:45 by kfaouzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,20 @@ typedef struct s_norm
 	char	**tab;	
 }	t_norm;
 
+typedef struct s_red_exe
+{
+	int	k;
+	int	j;
+	int	c;
+	int	check__;
+}	t_red_exe;
+
 /*********************************************************/
 /******************* builtin_commands ********************/
 /*********************************************************/
 
 int			builtin_commands(t_execlst *el);
-int			echo_cmd(t_execlst *el);
+int			echo_cmd(t_execlst *el, int k, int c, int check__);
 int			pwd_cmd(t_execlst *el);
 int			cd_cmd(char **line);
 int			env_cmd(t_execlst *el);
@@ -60,12 +68,19 @@ int			check_if_builtin(t_execlst *el);
 int			unset_env(char **line);
 int			unset_exp(char **line);
 void		add_variable(char **line, t_env *dt);
-void		exit_cmd(void);
+int			exit_cmd(t_execlst *el);
 void		mini_unset_env(t_env *tmp, t_env *tmp2);
 void		mini_unset_exp(t_env *tmp, t_env *tmp2);
 int			mini_echo(t_execlst *el);
 int			check_directory(char **line);
 void		print_echo(t_execlst *el);
+
+void		print_echo_n(t_execlst *el, int j);
+void		write_red_echo(t_execlst *el);
+void		write_red_echo_n(t_execlst *el, int k);
+int			red_echo(t_execlst *el);
+int			echo_heredc(t_execlst *el, int k, int c, int check__);
+int			red_out_echo(t_execlst *el, int k, int c, int check__);
 
 /*********************************************************/
 /********************** get_export ***********************/
@@ -126,22 +141,23 @@ bool		find_equal_export(char *str);
 int			export_cmd(char **line, t_execlst *el);
 void		red_export(t_execlst *el, t_env *dt);
 void		print_export(t_env *dt, int t);
+int			add_var_exp_env(char **line);
 
 //export_cmd_helper3.c
-int			find_it_exp(char **tab);
-int			handle_special_char_exp(char **line);
+int			find_it_exp(char *line);
+int			handle_special_char_exp(char *line);
 
 //export_cmd_helper2.c
-void		add_variable_exp(char **line, t_env *dt);
-void		add_var_helper(char **line, char **tab, t_env *dt);
+void		add_variable_exp(char *line, t_env **dt);
+void		add_var_helper(char *line, char **tab, t_env *dt);
 void		add_var_helper1(t_env *dt, char **tab);
-char		**add_var_helper2(char **line, t_env *dt, char **tab, int i);
-void		add_var_helper3(char **line, int i);
+char		**add_var_helper2(char *line, t_env **dt, char **tab);
+int			add_var_helper3(char *line);
 
 //export_cmd_helper.c
-int			exist_or_not_exp(char **tab, char **line);
+int			exist_or_not_exp(char **tab, char *line);
 int			check_if_in_export(char *variable);
-int			find_equal_exp(char **line);
+int			find_equal_exp(char *line);
 int			check_if_dollar(char *dollar);
 int			special_char(char *line, char **tab);
 
@@ -155,6 +171,8 @@ void		get_env_empty(t_env *dt);
 /*********************************************************/
 t_env		*init_envlst(void);
 void		get_env(t_env *dt);
+
+char		*getenv_from_my_env(char *key);
 
 //get_env_utils3.c
 int			ft_strcmp_env(const char *s1, const char *s2);
@@ -194,21 +212,21 @@ void		add_before_with_plus_env(char *var, t_env *tmp);
 int			ft_replace_value_env(t_env *dt, char *var, char *val);
 void		ft_replace_value_variable_env(t_env *dt, char *var, char *val);
 void		ft_concat_plus_env(t_env *dt, char *line);
-char		**add_variable_env_one(char **line, t_env *dt, char **tab, int i);
+char		**add_variable_env_one(char *line, t_env **dt, char **tab);
 
 //env_one.c
 int			ft_check_plus_env(char *line);
-int			find_equal_env(char **line);
-int			exist_or_not_env(char **tab, char **line);
+int			find_equal_env(char *line);
+int			exist_or_not_env(char **tab, char *line);
 bool		find_equal_environment(char *str);
-int			add_val_if_not_exist(t_env *dt, char **line, char **tab);
+int			add_val_if_not_exist(t_env *dt, char *line, char **tab);
 
 //env_four.c
-void		add_variable_env(char **line, t_env *dt);
+void		add_variable_env(char *line, t_env **dt);
 
 //env_cmd.c
 int			envcmd(t_execlst *el);
-void		add_variable_env_two(t_env *dt, char **tab, char **line);
+void		add_variable_env_two(t_env *dt, char **tab, char *line);
 void		add_variable_env_three(t_env *dt, char **tab);
 void		redin_env(t_env *tmp);
 int			redout_env(t_execlst *el, t_env *tmp);
